@@ -1,21 +1,383 @@
 {
-  "version": 1,
+  "version": 2,
   "root": "C:/Users/anilk/Desktop/coding/Visualize/sample-js",
   "nodes": {
-    "src/constants.js": {
-      "id": "src/constants.js",
-      "kind": "file",
+    "module:src/constants.js": {
+      "id": "module:src/constants.js",
+      "kind": "module",
       "file": "src/constants.js",
-      "range": null,
-      "hash": null,
+      "range": {
+        "start": 1,
+        "end": 3
+      },
+      "hash": "c8796df66008da972e2c29d197dc2b0e1892ded0",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The module defines and exports three constants: APP_NAME (\"Till\"), DISCOUNT_RATE (0.1), and TAX_RATE (0.08).",
+      "summary_hash": "9e435f550188e53e65161a24d312f0f22d02f431511f28e22daadf303827bc32",
+      "stale": false,
+      "tokens": [
+        "APP_NAME",
+        "DISCOUNT_RATE",
+        "TAX_RATE"
+      ],
+      "literals": [
+        "0.08",
+        "0.1",
+        "Till"
+      ]
+    },
+    "module:src/customer.js": {
+      "id": "module:src/customer.js",
+      "kind": "module",
+      "file": "src/customer.js",
+      "range": {
+        "start": 1,
+        "end": 5
+      },
+      "hash": "df686178e1dcf18d002c3e38e91de73551400c2f",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The module exports a constant CUSTOMER set to \"ada lovelace\" and a greet function that returns a greeting string by concatenating \"Hello \" with a provided name.",
+      "summary_hash": "3afdc16f58fe771ec62f6061f2b1199ddf6515ea1033b0d2c9a763eea19f7290",
+      "stale": false,
+      "tokens": [
+        "CUSTOMER",
+        "greet",
+        "name"
+      ],
+      "literals": [
+        "Hello ",
+        "ada lovelace"
+      ]
+    },
+    "module:src/format.js": {
+      "id": "module:src/format.js",
+      "kind": "module",
+      "file": "src/format.js",
+      "range": {
+        "start": 1,
+        "end": 5
+      },
+      "hash": "af9266c10fbdffd9dc836ecef7e9249aed795e5b",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The formatMoney function formats a given amount to two decimal places and returns a string prefixed with the application name and a dollar sign.",
+      "summary_hash": "79559c487924100b8d4dd0f6430af6d573fac2111fc6b45dcb24c1380283e66e",
+      "stale": false,
+      "tokens": [
+        "APP_NAME",
+        "amount",
+        "formatMoney",
+        "toFixed"
+      ],
+      "literals": [
+        "./constants.js",
+        "2",
+        ": $"
+      ]
+    },
+    "module:src/kmp.js": {
+      "id": "module:src/kmp.js",
+      "kind": "module",
+      "file": "src/kmp.js",
+      "range": {
+        "start": 1,
+        "end": 14
+      },
+      "hash": "eb2eaf29e4c8a8878f1d73510983c26d10a603fa",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The kmp function implements the Knuth-Morris-Pratt algorithm by computing a prefix table for the pattern and iterating through the text to find matches, advancing indices on a match or resetting the pattern index based on the prefix table on a mismatch.",
+      "summary_hash": "d124e5ad785fa49618285e5035a69bc45e09fe5c90dbab0fef4fa13fca4643f6",
+      "stale": false,
+      "tokens": [
+        "ReadableStreamDefaultController",
+        "getPrefix",
+        "i",
+        "j",
+        "kmp",
+        "length",
+        "pattern",
+        "prefix",
+        "text"
+      ],
+      "literals": [
+        "0",
+        "1"
+      ]
+    },
+    "module:src/main.js": {
+      "id": "module:src/main.js",
+      "kind": "module",
+      "file": "src/main.js",
+      "range": {
+        "start": 1,
+        "end": 28
+      },
+      "hash": "198f271b76130618b12dc98aa4bd90e5e44e791d",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The module defines a checkout function that calculates a discounted and taxed total from a list of prices, along with a constant array of menu items and a dynamic import function for the math module. It also executes console logs to display a header, receipt lines, and the calculated daily total.",
+      "summary_hash": "2e2dc779d5510cb794b13c18df7380e596b21bcc39c8b5df21ef396fcf608a33",
+      "stale": false,
+      "tokens": [
+        "DISCOUNT_RATE",
+        "ITEMS",
+        "TAX_RATE",
+        "add",
+        "applyDiscount",
+        "applyTax",
+        "checkout",
+        "console",
+        "discounted",
+        "formatMoney",
+        "header",
+        "item",
+        "joinLines",
+        "label",
+        "loadExtra",
+        "log",
+        "map",
+        "name",
+        "price",
+        "prices",
+        "receiptLines",
+        "reduce",
+        "subtotal",
+        "sum",
+        "titleCase",
+        "total"
+      ],
+      "literals": [
+        " ",
+        "./constants.js",
+        "./format.js",
+        "./math.js",
+        "./receipt.js",
+        "./summary.js",
+        "./utils/index.js",
+        "0",
+        "10",
+        "2.5",
+        "5",
+        "coffee",
+        "daily total",
+        "muffin",
+        "tea"
+      ]
+    },
+    "module:src/math.js": {
+      "id": "module:src/math.js",
+      "kind": "module",
+      "file": "src/math.js",
+      "range": {
+        "start": 1,
+        "end": 13
+      },
+      "hash": "0e9f3bc04b5d968c3b7c62a8adc6db95ec4acab7",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The module exports four mathematical utility function: add, multiply, applyTax, and applyDiscount.",
+      "summary_hash": "769950b698c15e59e5829f494c311d58438c2433c052288325a0a4e0179b0d49",
+      "stale": false,
+      "tokens": [
+        "a",
+        "add",
+        "amount",
+        "applyDiscount",
+        "applyTax",
+        "b",
+        "multiply",
+        "rate"
+      ],
+      "literals": []
+    },
+    "module:src/receipt.js": {
+      "id": "module:src/receipt.js",
+      "kind": "module",
+      "file": "src/receipt.js",
+      "range": {
+        "start": 1,
+        "end": 9
+      },
+      "hash": "c5e329a8447f6fe514f2ce1e2444fb2727483d11",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The module exports lineFor, which formats a receipt line by combining the title-cased item name with its price to two decimal places, and receiptLines, which maps the lineFor function over an array of items to generate a list of receipt lines.",
+      "summary_hash": "a1661a9e699722cdec14e2e710389bc6ad64f70ea1ed0cad5d33431b64da1f1d",
+      "stale": false,
+      "tokens": [
+        "item",
+        "items",
+        "lineFor",
+        "map",
+        "name",
+        "price",
+        "receiptLines",
+        "titleCase",
+        "toFixed"
+      ],
+      "literals": [
+        " ",
+        "./utils/index.js",
+        "2"
+      ]
+    },
+    "module:src/summary.js": {
+      "id": "module:src/summary.js",
+      "kind": "module",
+      "file": "src/summary.js",
+      "range": {
+        "start": 1,
+        "end": 10
+      },
+      "hash": "421fdcd9ee2eb4e0dc87dc3b966698eeeaf49bfe",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The module exports itemCount, which returns the length of an items array, and header, which generates a greeting string by combining a title-cased customer name with the total item count.",
+      "summary_hash": "883aa7fb2c8ed962f8305fec7d9189051aef700677d99ac4d43007ee58bae285",
+      "stale": false,
+      "tokens": [
+        "CUSTOMER",
+        "greet",
+        "header",
+        "itemCount",
+        "items",
+        "length",
+        "titleCase"
+      ],
+      "literals": [
+        " (",
+        " items)",
+        "./customer.js",
+        "./utils/index.js"
+      ]
+    },
+    "module:src/utils/index.js": {
+      "id": "module:src/utils/index.js",
+      "kind": "module",
+      "file": "src/utils/index.js",
+      "range": {
+        "start": 1,
+        "end": 2
+      },
+      "hash": "70ae3d37a6dd72689d116444355e6ac265422757",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "This module re-exports the joinLines function from ./join.js and the titleCase function from ./string.js.",
+      "summary_hash": "bd01f198c70e619693095b919798a96d744c2cfbded0cdeeffddbee4066e5f52",
+      "stale": false,
+      "tokens": [
+        "joinLines",
+        "titleCase"
+      ],
+      "literals": [
+        "./join.js",
+        "./string.js"
+      ]
+    },
+    "module:src/utils/join.js": {
+      "id": "module:src/utils/join.js",
+      "kind": "module",
+      "file": "src/utils/join.js",
+      "range": {
+        "start": 1,
+        "end": 3
+      },
+      "hash": "e3a8be64b668cc23bf58e8679f6353758ed493b9",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The join function in src/utils/join.js takes an array of lines and returns a single string with the elements joined by newline characters.",
+      "summary_hash": "db4b8124ed8f46162b2b4f680cc5bac05837b60b3e1f26e2fc38b530e1f3a57d",
+      "stale": false,
+      "tokens": [
+        "join",
+        "joinLines",
+        "lines"
+      ],
+      "literals": []
+    },
+    "module:src/utils/string.js": {
+      "id": "module:src/utils/string.js",
+      "kind": "module",
+      "file": "src/utils/string.js",
+      "range": {
+        "start": 1,
+        "end": 3
+      },
+      "hash": "cc13727115a85bd32087c0027c24bed4548c7b3b",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The module exports a titleCase function that converts the first letter of each word in a string to uppercase using a regular expression.",
+      "summary_hash": "6ed82c8280410b4d5754d1f4ee87cfc823e9ed1d3e8bff0032f3164654646c82",
+      "stale": false,
+      "tokens": [
+        "char",
+        "replace",
+        "titleCase",
+        "toUpperCase",
+        "value"
+      ],
+      "literals": []
+    },
+    "src/constants.js": {
+      "id": "src/constants.js",
+      "kind": "file",
+      "file": "src/constants.js",
+      "range": null,
+      "hash": "c8796df66008da972e2c29d197dc2b0e1892ded0",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "src/constants.js defines and exports three constants: APP_NAME (\"Till\"), DISCOUNT_RATE (0.1), and TAX_RATE (0.08).",
+      "summary_hash": "b7251e3124318c5a51cab6a8abb4ba2df4c78f7a53330999d9001f871d1a6f9e",
+      "stale": false,
+      "tokens": [
+        "APP_NAME",
+        "DISCOUNT_RATE",
+        "TAX_RATE"
+      ],
+      "literals": [
+        "0.08",
+        "0.1",
+        "Till"
+      ]
     },
     "src/constants.js#APP_NAME": {
       "id": "src/constants.js#APP_NAME",
@@ -33,7 +395,13 @@
       },
       "summary": "Defines the application name constant APP_NAME with the value \"Till\".",
       "summary_hash": "dee98c178802b86f5ffea2c9a5d8613e4aa31852e23d9fcd6b770e58ce0d2110",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "APP_NAME"
+      ],
+      "literals": [
+        "Till"
+      ]
     },
     "src/constants.js#DISCOUNT_RATE": {
       "id": "src/constants.js#DISCOUNT_RATE",
@@ -51,7 +419,13 @@
       },
       "summary": "DISCOUNT_RATE is a constant defined in src/constants.js with a value of 0.1.",
       "summary_hash": "8d21c7d8bed1085a97b469fc01760f9a38bf842941d92855fe7df8a17ab779dd",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "DISCOUNT_RATE"
+      ],
+      "literals": [
+        "0.1"
+      ]
     },
     "src/constants.js#TAX_RATE": {
       "id": "src/constants.js#TAX_RATE",
@@ -67,24 +441,39 @@
         "params": [],
         "returns": null
       },
-      "summary": "Defines the constant TAX_RATE with a value of 0.08.",
-      "summary_hash": "e5db27464cfabdc448a5e63f84d4f4dc6a2c0359d6a95ad0c99a8a0eb273ff52",
-      "stale": false
+      "summary": "The constant TAX_RATE is defined with a value of 0.08.",
+      "summary_hash": "3fa72c9bca22e28641bedcb0cca9c41ece92f9ed6e04904c9851d6fad401b1ed",
+      "stale": false,
+      "tokens": [
+        "TAX_RATE"
+      ],
+      "literals": [
+        "0.08"
+      ]
     },
     "src/customer.js": {
       "id": "src/customer.js",
       "kind": "file",
       "file": "src/customer.js",
       "range": null,
-      "hash": null,
+      "hash": "df686178e1dcf18d002c3e38e91de73551400c2f",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The file defines a constant CUSTOMER with the value \"ada lovelace\" and exports a greet function that returns a greeting string by concatenating \"Hello \" with a provided name parameter.",
+      "summary_hash": "556c589e5d9a2774b37926f956f9de65b8d70baceee818d2696857a7da7a9163",
+      "stale": false,
+      "tokens": [
+        "CUSTOMER",
+        "greet",
+        "name"
+      ],
+      "literals": [
+        "Hello ",
+        "ada lovelace"
+      ]
     },
     "src/customer.js#CUSTOMER": {
       "id": "src/customer.js#CUSTOMER",
@@ -102,7 +491,13 @@
       },
       "summary": "Defines a constant named CUSTOMER with the string value \"ada lovelace\".",
       "summary_hash": "94ff2a5000a572415e9b59c34ee4443b6e9838c16db549d7d7ee37e186bcb04f",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "CUSTOMER"
+      ],
+      "literals": [
+        "ada lovelace"
+      ]
     },
     "src/customer.js#greet": {
       "id": "src/customer.js#greet",
@@ -120,24 +515,42 @@
         ],
         "returns": null
       },
-      "summary": "The greet function takes a name parameter and returns a string concatenating 'Hello ' with the provided name.",
-      "summary_hash": "c9e4a29dd713a0982d799acc667379154c459a6a825f0abc9daf67e993dcc4e0",
-      "stale": false
+      "summary": "The `greet` function takes a `name` parameter and returns a string concatenating \"Hello \" with the provided name.",
+      "summary_hash": "3589ae9e725df615d41f789c912a46e45d642af8821c9a10b1fa5032f8387999",
+      "stale": false,
+      "tokens": [
+        "greet",
+        "name"
+      ],
+      "literals": [
+        "Hello "
+      ]
     },
     "src/format.js": {
       "id": "src/format.js",
       "kind": "file",
       "file": "src/format.js",
       "range": null,
-      "hash": null,
+      "hash": "af9266c10fbdffd9dc836ecef7e9249aed795e5b",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The formatMoney function formats a given amount to two decimal places and returns a string prefixed with the application name and a dollar sign.",
+      "summary_hash": "79559c487924100b8d4dd0f6430af6d573fac2111fc6b45dcb24c1380283e66e",
+      "stale": false,
+      "tokens": [
+        "APP_NAME",
+        "amount",
+        "formatMoney",
+        "toFixed"
+      ],
+      "literals": [
+        "./constants.js",
+        "2",
+        ": $"
+      ]
     },
     "src/format.js#formatMoney": {
       "id": "src/format.js#formatMoney",
@@ -155,24 +568,144 @@
         ],
         "returns": null
       },
-      "summary": "The formatMoney function takes an amount parameter and returns a string that prefixes the APP_NAME with a dollar sign and the amount formatted to two decimal places.",
-      "summary_hash": "0791fbcce7d7b02c68fb6d0b114a8d9711f1fc3ca59c5a8677a4aa9caeed3306",
-      "stale": false
+      "summary": "The formatMoney function takes an amount and returns a string prefixed with the application name and a dollar sign, with the amount formatted to two decimal places.",
+      "summary_hash": "eac7c9a9c3c3b6026b3a4f519bd9f17f79de7f4716176fc72f472aa0e8acda41",
+      "stale": false,
+      "tokens": [
+        "APP_NAME",
+        "amount",
+        "formatMoney",
+        "toFixed"
+      ],
+      "literals": [
+        "2",
+        ": $"
+      ]
+    },
+    "src/kmp.js": {
+      "id": "src/kmp.js",
+      "kind": "file",
+      "file": "src/kmp.js",
+      "range": null,
+      "hash": "eb2eaf29e4c8a8878f1d73510983c26d10a603fa",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": "The kmp function implements the Knuth-Morris-Pratt algorithm by computing a prefix table for the pattern and iterating through the text to find matches, advancing indices on a match or resetting the pattern index based on the prefix table on a mismatch.",
+      "summary_hash": "d124e5ad785fa49618285e5035a69bc45e09fe5c90dbab0fef4fa13fca4643f6",
+      "stale": false,
+      "tokens": [
+        "ReadableStreamDefaultController",
+        "getPrefix",
+        "i",
+        "j",
+        "kmp",
+        "length",
+        "pattern",
+        "prefix",
+        "text"
+      ],
+      "literals": [
+        "0",
+        "1"
+      ]
+    },
+    "src/kmp.js#kmp": {
+      "id": "src/kmp.js#kmp",
+      "kind": "function",
+      "file": "src/kmp.js",
+      "range": {
+        "start": 2,
+        "end": 14
+      },
+      "hash": "425370471f717debe97beb25d25c4c6d82f2925d",
+      "signature": {
+        "props": [],
+        "params": [
+          "pattern",
+          "text"
+        ],
+        "returns": null
+      },
+      "summary": "The kmp function takes a pattern and text, computes the prefix table for the pattern, and iterates through the text to find matches by advancing indices or resetting the pattern index based on the prefix table.",
+      "summary_hash": "a517babed10b9f866d444836172cdd5cd70ed3708c508320f787d487357308a3",
+      "stale": false,
+      "tokens": [
+        "getPrefix",
+        "i",
+        "j",
+        "kmp",
+        "length",
+        "pattern",
+        "prefix",
+        "text"
+      ],
+      "literals": [
+        "0",
+        "1"
+      ]
     },
     "src/main.js": {
       "id": "src/main.js",
       "kind": "file",
       "file": "src/main.js",
       "range": null,
-      "hash": null,
+      "hash": "198f271b76130618b12dc98aa4bd90e5e44e791d",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The file defines a checkout function that calculates a discounted and taxed total from a list of prices, along with a constant array of menu items and a dynamic import function for the math module. It also executes console logs to display a header, receipt lines, and the calculated daily total.",
+      "summary_hash": "a114748c730814c103e80dc6ae25dded219d1889af2907164e3c7b626e5b744c",
+      "stale": false,
+      "tokens": [
+        "DISCOUNT_RATE",
+        "ITEMS",
+        "TAX_RATE",
+        "add",
+        "applyDiscount",
+        "applyTax",
+        "checkout",
+        "console",
+        "discounted",
+        "formatMoney",
+        "header",
+        "item",
+        "joinLines",
+        "label",
+        "loadExtra",
+        "log",
+        "map",
+        "name",
+        "price",
+        "prices",
+        "receiptLines",
+        "reduce",
+        "subtotal",
+        "sum",
+        "titleCase",
+        "total"
+      ],
+      "literals": [
+        " ",
+        "./constants.js",
+        "./format.js",
+        "./math.js",
+        "./receipt.js",
+        "./summary.js",
+        "./utils/index.js",
+        "0",
+        "10",
+        "2.5",
+        "5",
+        "coffee",
+        "daily total",
+        "muffin",
+        "tea"
+      ]
     },
     "src/main.js#ITEMS": {
       "id": "src/main.js#ITEMS",
@@ -188,9 +721,22 @@
         "params": [],
         "returns": null
       },
-      "summary": "ITEMS is a constant array containing three objects representing menu items (coffee, tea, muffin) with their respective names and prices.",
-      "summary_hash": "468e6766b9fa7d69f59c9d277f053d3c1007a2b6a016b4b615a731428df04d45",
-      "stale": false
+      "summary": "ITEMS is a constant array containing three objects representing menu items (coffee, tea, muffin) with their respective prices.",
+      "summary_hash": "9db1963853a13daa6a10ed4c80207c8dfa7c240f4392db98073d169243149773",
+      "stale": false,
+      "tokens": [
+        "ITEMS",
+        "name",
+        "price"
+      ],
+      "literals": [
+        "10",
+        "2.5",
+        "5",
+        "coffee",
+        "muffin",
+        "tea"
+      ]
     },
     "src/main.js#checkout": {
       "id": "src/main.js#checkout",
@@ -209,9 +755,31 @@
         ],
         "returns": null
       },
-      "summary": "The `checkout` function calculates the final price by summing the provided prices, applying a discount and tax, and returning a formatted string that includes the total amount and the title-cased label.",
-      "summary_hash": "c06b119b480534417978e57095a81eee14108493d975a57a51bc2d47c8d45eaa",
-      "stale": false
+      "summary": "The checkout function calculates the final price by summing the provided prices, applying a discount and tax, and returns a formatted string combining the total amount and the title-cased label.",
+      "summary_hash": "8f6b25551f458028e638b57d6a1a8adba31a026cd18cd3c01a5ea95c2772d730",
+      "stale": false,
+      "tokens": [
+        "DISCOUNT_RATE",
+        "TAX_RATE",
+        "add",
+        "applyDiscount",
+        "applyTax",
+        "checkout",
+        "discounted",
+        "formatMoney",
+        "label",
+        "price",
+        "prices",
+        "reduce",
+        "subtotal",
+        "sum",
+        "titleCase",
+        "total"
+      ],
+      "literals": [
+        " ",
+        "0"
+      ]
     },
     "src/main.js#loadExtra": {
       "id": "src/main.js#loadExtra",
@@ -229,22 +797,39 @@
       },
       "summary": "The loadExtra function dynamically imports the math.js module.",
       "summary_hash": "de3529ffb2340d28f3541beebfcd7fba925b6242ada8235cf5bdc3e2cde8f3f8",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "loadExtra"
+      ],
+      "literals": [
+        "./math.js"
+      ]
     },
     "src/math.js": {
       "id": "src/math.js",
       "kind": "file",
       "file": "src/math.js",
       "range": null,
-      "hash": null,
+      "hash": "0e9f3bc04b5d968c3b7c62a8adc6db95ec4acab7",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The file exports four mathematical utility functions: add and multiply for basic arithmetic, applyTax to calculate the total after adding tax, and applyDiscount to calculate the final price after subtracting a discount.",
+      "summary_hash": "4906086d06ae7317427233620cc1ea94aafa167504d4ccbbe254243e8458d7f6",
+      "stale": false,
+      "tokens": [
+        "a",
+        "add",
+        "amount",
+        "applyDiscount",
+        "applyTax",
+        "b",
+        "multiply",
+        "rate"
+      ],
+      "literals": []
     },
     "src/math.js#add": {
       "id": "src/math.js#add",
@@ -265,7 +850,13 @@
       },
       "summary": "The add function takes two parameters, a and b, and returns their sum.",
       "summary_hash": "943e5e6c7002b090e018788816872de49bc3018e09a554c80b5737aa43cc683c",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "a",
+        "add",
+        "b"
+      ],
+      "literals": []
     },
     "src/math.js#applyDiscount": {
       "id": "src/math.js#applyDiscount",
@@ -284,9 +875,15 @@
         ],
         "returns": null
       },
-      "summary": "The applyDiscount function calculates the final price by subtracting the discount amount (amount multiplied by rate) from the original amount.",
-      "summary_hash": "c7b862e6f46474bdb3a1ef7ca08e72fead4967c6c68f09f21331944cb8bbaa4c",
-      "stale": false
+      "summary": "The applyDiscount function calculates the final price by subtracting the discount (amount multiplied by rate) from the original amount.",
+      "summary_hash": "925e2dcb532fe1fbc770572365900ebef1354a6ad1b9f251bc565d270ef32758",
+      "stale": false,
+      "tokens": [
+        "amount",
+        "applyDiscount",
+        "rate"
+      ],
+      "literals": []
     },
     "src/math.js#applyTax": {
       "id": "src/math.js#applyTax",
@@ -307,7 +904,13 @@
       },
       "summary": "The applyTax function calculates the total amount after tax by adding the product of the amount and the tax rate to the original amount.",
       "summary_hash": "ad74ca1210af278e13eca1eb67d8f4081bc97c2b2ec2bc30feb4b96a138b57d6",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "amount",
+        "applyTax",
+        "rate"
+      ],
+      "literals": []
     },
     "src/math.js#multiply": {
       "id": "src/math.js#multiply",
@@ -328,22 +931,44 @@
       },
       "summary": "The multiply function takes two parameters, a and b, and returns their product.",
       "summary_hash": "5ad65ed8bcc02d82f9191c4898d0441bd80a50efa0c80676193837b8348a40da",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "a",
+        "b",
+        "multiply"
+      ],
+      "literals": []
     },
     "src/receipt.js": {
       "id": "src/receipt.js",
       "kind": "file",
       "file": "src/receipt.js",
       "range": null,
-      "hash": null,
+      "hash": "c5e329a8447f6fe514f2ce1e2444fb2727483d11",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The file exports lineFor, which formats a receipt line by combining the title-cased item name with its price to two decimal places, and receiptLines, which maps the lineFor function over an array of items to generate a list of receipt lines.",
+      "summary_hash": "9e5b25d1c5cbdc2da2e67d1c473a5eea7a19edc32cafed222843f93899108ce9",
+      "stale": false,
+      "tokens": [
+        "item",
+        "items",
+        "lineFor",
+        "map",
+        "name",
+        "price",
+        "receiptLines",
+        "titleCase",
+        "toFixed"
+      ],
+      "literals": [
+        " ",
+        "./utils/index.js",
+        "2"
+      ]
     },
     "src/receipt.js#lineFor": {
       "id": "src/receipt.js#lineFor",
@@ -363,7 +988,19 @@
       },
       "summary": "The lineFor function formats a receipt line by combining the title-cased item name with its price formatted to two decimal places.",
       "summary_hash": "33c5ece5fc15a1a5634c827ae6bea97f95342ac7b025521615e0e1bb252813a3",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "item",
+        "lineFor",
+        "name",
+        "price",
+        "titleCase",
+        "toFixed"
+      ],
+      "literals": [
+        " ",
+        "2"
+      ]
     },
     "src/receipt.js#receiptLines": {
       "id": "src/receipt.js#receiptLines",
@@ -381,24 +1018,46 @@
         ],
         "returns": null
       },
-      "summary": "The `receiptLines` function takes an array of items and returns a new array where each item is transformed using the `lineFor` function.",
-      "summary_hash": "9e33ff6cca61e7a4002e74eba06a97058785b2cb60607a9d8ca7075f1c87ed83",
-      "stale": false
+      "summary": "The receipt function maps over the provided items array, applying the lineFor function to each element to generate a list of receipt lines.",
+      "summary_hash": "4ab4f3cea5ae00dfaf10586f8844a2a4b05542eff8a14e94e475b6e1f312c2e3",
+      "stale": false,
+      "tokens": [
+        "items",
+        "lineFor",
+        "map",
+        "receiptLines"
+      ],
+      "literals": []
     },
     "src/summary.js": {
       "id": "src/summary.js",
       "kind": "file",
       "file": "src/summary.js",
       "range": null,
-      "hash": null,
+      "hash": "421fdcd9ee2eb4e0dc87dc3b966698eeeaf49bfe",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The file exports itemCount, which returns the length of an items array, and header, which generates a greeting string by combining a title-cased customer name with the total item count.",
+      "summary_hash": "f44f9c477206a0047044339c5e53339816b3a86d478f047e63cd1aedb9cc784d",
+      "stale": false,
+      "tokens": [
+        "CUSTOMER",
+        "greet",
+        "header",
+        "itemCount",
+        "items",
+        "length",
+        "titleCase"
+      ],
+      "literals": [
+        " (",
+        " items)",
+        "./customer.js",
+        "./utils/index.js"
+      ]
     },
     "src/summary.js#header": {
       "id": "src/summary.js#header",
@@ -416,9 +1075,21 @@
         ],
         "returns": null
       },
-      "summary": "The header function takes an items parameter and returns a string combining a greeting based on the CUSTOMER constant, the title-cased customer name, and the item count derived from the items array.",
-      "summary_hash": "31efd655e2f4adac78ac0c2346069c0e4173b5b89959b21a2bb71f637867b520",
-      "stale": false
+      "summary": "The header function generates a greeting string by combining a title-cased customer name with the total item count from the provided items array.",
+      "summary_hash": "f6ea41a10bc1523190312b4460a34ae9ebc6f941d6a19efa8c5b602921c25583",
+      "stale": false,
+      "tokens": [
+        "CUSTOMER",
+        "greet",
+        "header",
+        "itemCount",
+        "items",
+        "titleCase"
+      ],
+      "literals": [
+        " (",
+        " items)"
+      ]
     },
     "src/summary.js#itemCount": {
       "id": "src/summary.js#itemCount",
@@ -436,39 +1107,59 @@
         ],
         "returns": null
       },
-      "summary": "Returns the length of the provided items array.",
-      "summary_hash": "066a9c50259ae262593d7399bf50de008ef1e6fd578248a798eec2e7e36e55d8",
-      "stale": false
+      "summary": "The itemCount function takes an array of items as a parameter and returns the length of that array.",
+      "summary_hash": "73f9a08f6f8786fdc384daacc483588ce66238643a4da8a72a1dac0a5017137d",
+      "stale": false,
+      "tokens": [
+        "itemCount",
+        "items",
+        "length"
+      ],
+      "literals": []
     },
     "src/utils/index.js": {
       "id": "src/utils/index.js",
       "kind": "file",
       "file": "src/utils/index.js",
       "range": null,
-      "hash": null,
+      "hash": "70ae3d37a6dd72689d116444355e6ac265422757",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "This file re-exports the joinLines function from ./join.js and the titleCase function from ./string.js.",
+      "summary_hash": "9742b70c80d33d120fb467bb587f8e1ff37f819c3e6cf21995e9ccc75ccb005f",
+      "stale": false,
+      "tokens": [
+        "joinLines",
+        "titleCase"
+      ],
+      "literals": [
+        "./join.js",
+        "./string.js"
+      ]
     },
     "src/utils/join.js": {
       "id": "src/utils/join.js",
       "kind": "file",
       "file": "src/utils/join.js",
       "range": null,
-      "hash": null,
+      "hash": "e3a8be64b668cc23bf58e8679f6353758ed493b9",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The joinLines function takes an array of lines and returns a single string with the elements joined by newline characters.",
+      "summary_hash": "f3d5be5e9af62be1fec960495040f966a1d8f60fe341320d188e45071e285f5e",
+      "stale": false,
+      "tokens": [
+        "join",
+        "joinLines",
+        "lines"
+      ],
+      "literals": []
     },
     "src/utils/join.js#joinLines": {
       "id": "src/utils/join.js#joinLines",
@@ -486,24 +1177,38 @@
         ],
         "returns": null
       },
-      "summary": "The joinLines function takes an array of lines and returns a single string with the elements joined by newline characters.",
-      "summary_hash": "f3d5be5e9af62be1fec960495040f966a1d8f60fe341320d188e45071e285f5e",
-      "stale": false
+      "summary": "The joinLines function takes an array of lines as input and returns a single string where the elements are joined by newline characters.",
+      "summary_hash": "c042e5f0846c13288d2e50743c1c7d3380cce67552a62fd26988f81cc2be9fea",
+      "stale": false,
+      "tokens": [
+        "join",
+        "joinLines",
+        "lines"
+      ],
+      "literals": []
     },
     "src/utils/string.js": {
       "id": "src/utils/string.js",
       "kind": "file",
       "file": "src/utils/string.js",
       "range": null,
-      "hash": null,
+      "hash": "cc13727115a85bd32087c0027c24bed4548c7b3b",
       "signature": {
         "props": [],
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The titleCase function in src/utils/string.js converts the first letter of each word in a given string to uppercase using a regular expression replacement.",
+      "summary_hash": "e48665c529ac967d41f13b370f2bba82521afee9ed20f4b9de8c49ba4acff541",
+      "stale": false,
+      "tokens": [
+        "char",
+        "replace",
+        "titleCase",
+        "toUpperCase",
+        "value"
+      ],
+      "literals": []
     },
     "src/utils/string.js#titleCase": {
       "id": "src/utils/string.js#titleCase",
@@ -523,10 +1228,150 @@
       },
       "summary": "The titleCase function converts the first letter of each word in the input string to uppercase using a regular expression replacement.",
       "summary_hash": "87ec25d9868fbcfa9c5f6297ef6a9ece841ef10644d736f6abcc232e7ea7c6a2",
-      "stale": false
+      "stale": false,
+      "tokens": [
+        "char",
+        "replace",
+        "titleCase",
+        "toUpperCase",
+        "value"
+      ],
+      "literals": []
     }
   },
   "edges": [
+    {
+      "from": "module:src/constants.js",
+      "to": "src/constants.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/constants.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/customer.js",
+      "to": "src/customer.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/customer.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/format.js",
+      "to": "src/format.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/format.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/kmp.js",
+      "to": "src/kmp.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/kmp.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/main.js",
+      "to": "src/main.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/math.js",
+      "to": "src/math.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/math.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/receipt.js",
+      "to": "src/receipt.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/receipt.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/summary.js",
+      "to": "src/summary.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/summary.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/utils/index.js",
+      "to": "src/utils/index.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/utils/index.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/utils/join.js",
+      "to": "src/utils/join.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/utils/join.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "module:src/utils/string.js",
+      "to": "src/utils/string.js",
+      "type": "contains",
+      "evidence": {
+        "file": "src/utils/string.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
     {
       "from": "src/constants.js",
       "to": "src/constants.js#APP_NAME",
@@ -536,7 +1381,8 @@
         "line": 3
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/constants.js",
@@ -547,7 +1393,8 @@
         "line": 2
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/constants.js",
@@ -558,7 +1405,32 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/constants.js#DISCOUNT_RATE",
+      "to": "src/math.js#applyDiscount",
+      "type": "flows_into",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 10
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/constants.js#TAX_RATE",
+      "to": "src/math.js#applyTax",
+      "type": "flows_into",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 11
+      },
+      "props": [],
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/customer.js",
@@ -569,7 +1441,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/customer.js",
@@ -580,7 +1453,20 @@
         "line": 3
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/customer.js#CUSTOMER",
+      "to": "src/utils/string.js#titleCase",
+      "type": "flows_into",
+      "evidence": {
+        "file": "src/summary.js",
+        "line": 9
+      },
+      "props": [],
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/format.js",
@@ -591,7 +1477,8 @@
         "line": 3
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/format.js",
@@ -602,7 +1489,32 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/format.js#formatMoney",
+      "to": "src/constants.js#APP_NAME",
+      "type": "references",
+      "evidence": {
+        "file": "src/format.js",
+        "line": 4
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/kmp.js",
+      "to": "src/kmp.js#kmp",
+      "type": "contains",
+      "evidence": {
+        "file": "src/kmp.js",
+        "line": 2
+      },
+      "props": [],
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -613,7 +1525,10 @@
         "line": 26
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "(item) => item.price"
+      ]
     },
     {
       "from": "src/main.js",
@@ -624,7 +1539,11 @@
         "line": 26
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "\"daily total\"",
+        "ITEMS.map((item) => item.price)"
+      ]
     },
     {
       "from": "src/main.js",
@@ -635,7 +1554,10 @@
         "line": 24
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "ITEMS"
+      ]
     },
     {
       "from": "src/main.js",
@@ -646,7 +1568,10 @@
         "line": 23
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "ITEMS"
+      ]
     },
     {
       "from": "src/main.js",
@@ -657,7 +1582,10 @@
         "line": 24
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "receiptLines(ITEMS)"
+      ]
     },
     {
       "from": "src/main.js",
@@ -668,7 +1596,8 @@
         "line": 15
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -679,7 +1608,8 @@
         "line": 8
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -690,7 +1620,8 @@
         "line": 21
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -701,7 +1632,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -712,7 +1644,8 @@
         "line": 3
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -723,7 +1656,8 @@
         "line": 2
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -734,7 +1668,8 @@
         "line": 4
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -745,7 +1680,8 @@
         "line": 5
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js",
@@ -756,7 +1692,80 @@
         "line": 6
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/main.js#ITEMS",
+      "type": "references",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 23
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/main.js#ITEMS",
+      "type": "references",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 24
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/main.js#ITEMS",
+      "type": "references",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 26
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/main.js#loadExtra",
+      "type": "references",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 28
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/main.js#ITEMS",
+      "to": "src/receipt.js#receiptLines",
+      "type": "flows_into",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 24
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/main.js#ITEMS",
+      "to": "src/summary.js#header",
+      "type": "flows_into",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 23
+      },
+      "props": [],
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js#checkout",
@@ -767,7 +1776,10 @@
         "line": 12
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "total"
+      ]
     },
     {
       "from": "src/main.js#checkout",
@@ -778,7 +1790,11 @@
         "line": 9
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "sum",
+        "price"
+      ]
     },
     {
       "from": "src/main.js#checkout",
@@ -789,7 +1805,11 @@
         "line": 10
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "subtotal",
+        "DISCOUNT_RATE"
+      ]
     },
     {
       "from": "src/main.js#checkout",
@@ -800,7 +1820,11 @@
         "line": 11
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "discounted",
+        "TAX_RATE"
+      ]
     },
     {
       "from": "src/main.js#checkout",
@@ -811,7 +1835,34 @@
         "line": 12
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "label"
+      ]
+    },
+    {
+      "from": "src/main.js#checkout",
+      "to": "src/constants.js#DISCOUNT_RATE",
+      "type": "references",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 10
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/main.js#checkout",
+      "to": "src/constants.js#TAX_RATE",
+      "type": "references",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 11
+      },
+      "props": [],
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/main.js#loadExtra",
@@ -822,7 +1873,8 @@
         "line": 21
       },
       "props": [],
-      "raw": "import(./math.js)"
+      "raw": "import(./math.js)",
+      "args": []
     },
     {
       "from": "src/math.js",
@@ -833,7 +1885,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/math.js",
@@ -844,7 +1897,8 @@
         "line": 9
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/math.js",
@@ -855,7 +1909,8 @@
         "line": 5
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/math.js",
@@ -866,7 +1921,8 @@
         "line": 13
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/receipt.js",
@@ -877,7 +1933,8 @@
         "line": 3
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/receipt.js",
@@ -888,7 +1945,8 @@
         "line": 7
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/receipt.js",
@@ -899,7 +1957,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/receipt.js#lineFor",
@@ -910,7 +1969,22 @@
         "line": 4
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "item.name"
+      ]
+    },
+    {
+      "from": "src/receipt.js#receiptLines",
+      "to": "src/receipt.js#lineFor",
+      "type": "references",
+      "evidence": {
+        "file": "src/receipt.js",
+        "line": 8
+      },
+      "props": [],
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/summary.js",
@@ -921,7 +1995,8 @@
         "line": 8
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/summary.js",
@@ -932,7 +2007,8 @@
         "line": 4
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/summary.js",
@@ -943,7 +2019,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/summary.js",
@@ -954,7 +2031,8 @@
         "line": 2
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/summary.js#header",
@@ -965,7 +2043,10 @@
         "line": 9
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "titleCase(CUSTOMER)"
+      ]
     },
     {
       "from": "src/summary.js#header",
@@ -976,7 +2057,10 @@
         "line": 9
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "items"
+      ]
     },
     {
       "from": "src/summary.js#header",
@@ -987,7 +2071,22 @@
         "line": 9
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": [
+        "CUSTOMER"
+      ]
+    },
+    {
+      "from": "src/summary.js#header",
+      "to": "src/customer.js#CUSTOMER",
+      "type": "references",
+      "evidence": {
+        "file": "src/summary.js",
+        "line": 9
+      },
+      "props": [],
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/utils/index.js",
@@ -998,7 +2097,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/utils/index.js",
@@ -1009,7 +2109,8 @@
         "line": 2
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/utils/join.js",
@@ -1020,7 +2121,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     },
     {
       "from": "src/utils/string.js",
@@ -1031,7 +2133,8 @@
         "line": 1
       },
       "props": [],
-      "raw": null
+      "raw": null,
+      "args": []
     }
   ],
   "reverse": {
@@ -1039,8 +2142,20 @@
       "src/format.js",
       "src/main.js"
     ],
+    "src/constants.js#APP_NAME": [
+      "src/format.js#formatMoney"
+    ],
+    "src/constants.js#DISCOUNT_RATE": [
+      "src/main.js#checkout"
+    ],
+    "src/constants.js#TAX_RATE": [
+      "src/main.js#checkout"
+    ],
     "src/customer.js": [
       "src/summary.js"
+    ],
+    "src/customer.js#CUSTOMER": [
+      "src/summary.js#header"
     ],
     "src/customer.js#greet": [
       "src/summary.js#header"
@@ -1057,6 +2172,9 @@
     "src/main.js#checkout": [
       "src/main.js"
     ],
+    "src/main.js#loadExtra": [
+      "src/main.js"
+    ],
     "src/math.js": [
       "src/main.js"
     ],
@@ -1064,22 +2182,29 @@
       "src/main.js#checkout"
     ],
     "src/math.js#applyDiscount": [
+      "src/constants.js#DISCOUNT_RATE",
       "src/main.js#checkout"
     ],
     "src/math.js#applyTax": [
+      "src/constants.js#TAX_RATE",
       "src/main.js#checkout"
     ],
     "src/receipt.js": [
       "src/main.js"
     ],
+    "src/receipt.js#lineFor": [
+      "src/receipt.js#receiptLines"
+    ],
     "src/receipt.js#receiptLines": [
-      "src/main.js"
+      "src/main.js",
+      "src/main.js#ITEMS"
     ],
     "src/summary.js": [
       "src/main.js"
     ],
     "src/summary.js#header": [
-      "src/main.js"
+      "src/main.js",
+      "src/main.js#ITEMS"
     ],
     "src/summary.js#itemCount": [
       "src/summary.js#header"
@@ -1099,9 +2224,1867 @@
       "src/utils/index.js"
     ],
     "src/utils/string.js#titleCase": [
+      "src/customer.js#CUSTOMER",
       "src/main.js#checkout",
       "src/receipt.js#lineFor",
       "src/summary.js#header"
+    ]
+  },
+  "search": {
+    " $": [
+      "module:src/format.js",
+      "src/format.js",
+      "src/format.js#formatMoney"
+    ],
+    " (": [
+      "module:src/summary.js",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    " add and multiply for basic arithmetic, applytax to calculate the total after adding tax, and applydiscount to calculate the final price after subtracting a discount": [
+      "src/math.js"
+    ],
+    " add, multiply, applytax, and applydiscount": [
+      "module:src/math.js"
+    ],
+    " app_name (\"till\"), discount_rate (0": [
+      "module:src/constants.js",
+      "src/constants.js"
+    ],
+    " it also executes console logs to display a header, receipt lines, and the calculated daily total": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    " items)": [
+      "module:src/summary.js",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "./constants.js": [
+      "module:src/format.js",
+      "module:src/main.js",
+      "src/format.js",
+      "src/main.js"
+    ],
+    "./customer.js": [
+      "module:src/summary.js",
+      "src/summary.js"
+    ],
+    "./format.js": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "./join.js": [
+      "module:src/utils/index.js",
+      "src/utils/index.js"
+    ],
+    "./math.js": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#loadExtra"
+    ],
+    "./receipt.js": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "./string.js": [
+      "module:src/utils/index.js",
+      "src/utils/index.js"
+    ],
+    "./string.js.": [
+      "module:src/utils/index.js",
+      "src/utils/index.js"
+    ],
+    "./summary.js": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "./utils/index.js": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/summary.js"
+    ],
+    "0.08": [
+      "module:src/constants.js",
+      "src/constants.js",
+      "src/constants.js#TAX_RATE"
+    ],
+    "0.08.": [
+      "src/constants.js#TAX_RATE"
+    ],
+    "0.1": [
+      "module:src/constants.js",
+      "src/constants.js",
+      "src/constants.js#DISCOUNT_RATE"
+    ],
+    "0.1.": [
+      "src/constants.js#DISCOUNT_RATE"
+    ],
+    "08": [
+      "module:src/constants.js",
+      "src/constants.js",
+      "src/constants.js#TAX_RATE"
+    ],
+    "08)": [
+      "module:src/constants.js",
+      "src/constants.js"
+    ],
+    "1), and tax_rate (0": [
+      "module:src/constants.js",
+      "src/constants.js"
+    ],
+    "10": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "2.5": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "ada": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER"
+    ],
+    "ada lovelace": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER"
+    ],
+    "add": [
+      "module:src/main.js",
+      "module:src/math.js",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#add"
+    ],
+    "adding": [
+      "src/math.js",
+      "src/math.js#applyTax"
+    ],
+    "advancing": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "after": [
+      "src/math.js",
+      "src/math.js#applyTax"
+    ],
+    "algorithm": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "along": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "also": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "amount": [
+      "module:src/format.js",
+      "module:src/math.js",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax"
+    ],
+    "amount.": [
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax"
+    ],
+    "an": [
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/join.js",
+      "src/format.js#formatMoney",
+      "src/receipt.js",
+      "src/summary.js",
+      "src/summary.js#itemCount",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "and": [
+      "module:src/constants.js",
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/math.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "src/constants.js",
+      "src/customer.js",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#add",
+      "src/math.js#applyTax",
+      "src/math.js#multiply",
+      "src/receipt.js",
+      "src/summary.js",
+      "src/summary.js#itemCount",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "app_name": [
+      "module:src/constants.js",
+      "module:src/format.js",
+      "src/constants.js",
+      "src/constants.js#APP_NAME",
+      "src/format.js",
+      "src/format.js#formatMoney"
+    ],
+    "application": [
+      "module:src/format.js",
+      "src/constants.js#APP_NAME",
+      "src/format.js",
+      "src/format.js#formatMoney"
+    ],
+    "applydiscount": [
+      "module:src/main.js",
+      "module:src/math.js",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#applyDiscount"
+    ],
+    "applydiscount.": [
+      "module:src/math.js"
+    ],
+    "applying": [
+      "src/main.js#checkout",
+      "src/receipt.js#receiptLines"
+    ],
+    "applytax": [
+      "module:src/main.js",
+      "module:src/math.js",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#applyTax"
+    ],
+    "are": [
+      "src/utils/join.js#joinLines"
+    ],
+    "arithmetic": [
+      "src/math.js"
+    ],
+    "array": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/join.js",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines",
+      "src/summary.js",
+      "src/summary.js#itemCount",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "array.": [
+      "src/summary.js#header",
+      "src/summary.js#itemCount"
+    ],
+    "as": [
+      "src/summary.js#itemCount",
+      "src/utils/join.js#joinLines"
+    ],
+    "based": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "basic": [
+      "src/math.js"
+    ],
+    "by": [
+      "module:src/customer.js",
+      "module:src/kmp.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/join.js",
+      "src/customer.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js#checkout",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "calculate": [
+      "src/math.js"
+    ],
+    "calculated": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "calculates": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax"
+    ],
+    "char": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "characters.": [
+      "module:src/utils/join.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "checkout": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "coffee": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "combining": [
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "src/main.js#checkout",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "computes": [
+      "src/kmp.js#kmp"
+    ],
+    "computing": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "concatenating": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#greet"
+    ],
+    "console": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "constant": [
+      "module:src/customer.js",
+      "module:src/main.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "constants": [
+      "module:src/constants.js",
+      "module:src/format.js",
+      "module:src/main.js",
+      "src/constants.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/format.js",
+      "src/main.js"
+    ],
+    "containing": [
+      "src/main.js#ITEMS"
+    ],
+    "converts": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "count": [
+      "src/summary.js#header"
+    ],
+    "count.": [
+      "module:src/summary.js",
+      "src/summary.js"
+    ],
+    "customer": [
+      "module:src/customer.js",
+      "module:src/summary.js",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/customer.js#greet",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "daily": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "daily total": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "decimal": [
+      "module:src/format.js",
+      "module:src/receipt.js",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
+    ],
+    "defined": [
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE"
+    ],
+    "defines": [
+      "module:src/constants.js",
+      "module:src/main.js",
+      "src/constants.js",
+      "src/constants.js#APP_NAME",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/main.js"
+    ],
+    "defines a constant named customer with the string value \"ada lovelace\"": [
+      "src/customer.js#CUSTOMER"
+    ],
+    "defines the application name constant app_name with the value \"till\"": [
+      "src/constants.js#APP_NAME"
+    ],
+    "discount": [
+      "src/main.js#checkout",
+      "src/math.js#applyDiscount"
+    ],
+    "discount.": [
+      "src/math.js"
+    ],
+    "discount_rate": [
+      "module:src/constants.js",
+      "module:src/main.js",
+      "src/constants.js",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "discount_rate is a constant defined in src": [
+      "src/constants.js#DISCOUNT_RATE"
+    ],
+    "discounted": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "display": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "dollar": [
+      "module:src/format.js",
+      "src/format.js",
+      "src/format.js#formatMoney"
+    ],
+    "dynamic": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "dynamically": [
+      "src/main.js#loadExtra"
+    ],
+    "each": [
+      "module:src/utils/string.js",
+      "src/receipt.js#receiptLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "element": [
+      "src/receipt.js#receiptLines"
+    ],
+    "elements": [
+      "module:src/utils/join.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "executes": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "exports": [
+      "module:src/constants.js",
+      "module:src/customer.js",
+      "module:src/math.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/string.js",
+      "src/constants.js",
+      "src/customer.js",
+      "src/math.js",
+      "src/receipt.js",
+      "src/summary.js"
+    ],
+    "expression": [
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "expression.": [
+      "module:src/utils/string.js"
+    ],
+    "file": [
+      "src/customer.js",
+      "src/main.js",
+      "src/math.js",
+      "src/receipt.js",
+      "src/summary.js",
+      "src/utils/index.js"
+    ],
+    "final": [
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#applyDiscount"
+    ],
+    "find": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "first": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "for": [
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/math.js"
+    ],
+    "format": [
+      "module:src/format.js",
+      "module:src/main.js",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/main.js"
+    ],
+    "formatmoney": [
+      "module:src/format.js",
+      "module:src/main.js",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "formats": [
+      "module:src/format.js",
+      "module:src/receipt.js",
+      "src/format.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
+    ],
+    "formatted": [
+      "src/format.js#formatMoney",
+      "src/main.js#checkout",
+      "src/receipt.js#lineFor"
+    ],
+    "four": [
+      "module:src/math.js",
+      "src/math.js"
+    ],
+    "from": [
+      "module:src/main.js",
+      "module:src/utils/index.js",
+      "src/main.js",
+      "src/math.js#applyDiscount",
+      "src/summary.js#header",
+      "src/utils/index.js"
+    ],
+    "function": [
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/math.js",
+      "module:src/receipt.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/customer.js",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/main.js#loadExtra",
+      "src/math.js#add",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax",
+      "src/math.js#multiply",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines",
+      "src/summary.js#header",
+      "src/summary.js#itemCount",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "functions": [
+      "src/math.js"
+    ],
+    "generate": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines"
+    ],
+    "generates": [
+      "module:src/summary.js",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "getprefix": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "given": [
+      "module:src/format.js",
+      "src/format.js",
+      "src/utils/string.js"
+    ],
+    "greet": [
+      "module:src/customer.js",
+      "module:src/summary.js",
+      "src/customer.js",
+      "src/customer.js#greet",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "greeting": [
+      "module:src/customer.js",
+      "module:src/summary.js",
+      "src/customer.js",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "header": [
+      "module:src/main.js",
+      "module:src/summary.js",
+      "src/main.js",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "hello": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#greet"
+    ],
+    "hello ": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#greet"
+    ],
+    "implements": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "import": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "imports": [
+      "src/main.js#loadExtra"
+    ],
+    "in": [
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "index": [
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/receipt.js",
+      "src/summary.js",
+      "src/utils/index.js"
+    ],
+    "indices": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "input": [
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js#titleCase"
+    ],
+    "is": [
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/main.js#ITEMS"
+    ],
+    "it": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "item": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "itemcount": [
+      "module:src/summary.js",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/summary.js#itemCount"
+    ],
+    "items": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/summary.js#itemCount"
+    ],
+    "items is a constant array containing three objects representing menu items (coffee, tea, muffin) with their respective prices": [
+      "src/main.js#ITEMS"
+    ],
+    "iterates": [
+      "src/kmp.js#kmp"
+    ],
+    "iterating": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "its": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
+    ],
+    "join": [
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "joined": [
+      "module:src/utils/join.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "joinlines": [
+      "module:src/main.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "src/main.js",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "js": [
+      "module:src/constants.js",
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/math.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/constants.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/main.js#checkout",
+      "src/main.js#loadExtra",
+      "src/math.js",
+      "src/math.js#add",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax",
+      "src/math.js#multiply",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/summary.js#itemCount",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "js and the titlecase function from ": [
+      "module:src/utils/index.js",
+      "src/utils/index.js"
+    ],
+    "js converts the first letter of each word in a given string to uppercase using a regular expression replacement": [
+      "src/utils/string.js"
+    ],
+    "js defines and exports three constants": [
+      "src/constants.js"
+    ],
+    "js module": [
+      "src/main.js#loadExtra"
+    ],
+    "js takes an array of lines and returns a single string with the elements joined by newline characters": [
+      "module:src/utils/join.js"
+    ],
+    "js with a value of 0": [
+      "src/constants.js#DISCOUNT_RATE"
+    ],
+    "js#add": [
+      "src/math.js#add"
+    ],
+    "js#app_name": [
+      "src/constants.js#APP_NAME"
+    ],
+    "js#applydiscount": [
+      "src/math.js#applyDiscount"
+    ],
+    "js#applytax": [
+      "src/math.js#applyTax"
+    ],
+    "js#checkout": [
+      "src/main.js#checkout"
+    ],
+    "js#customer": [
+      "src/customer.js#CUSTOMER"
+    ],
+    "js#discount_rate": [
+      "src/constants.js#DISCOUNT_RATE"
+    ],
+    "js#formatmoney": [
+      "src/format.js#formatMoney"
+    ],
+    "js#greet": [
+      "src/customer.js#greet"
+    ],
+    "js#header": [
+      "src/summary.js#header"
+    ],
+    "js#itemcount": [
+      "src/summary.js#itemCount"
+    ],
+    "js#items": [
+      "src/main.js#ITEMS"
+    ],
+    "js#joinlines": [
+      "src/utils/join.js#joinLines"
+    ],
+    "js#kmp": [
+      "src/kmp.js#kmp"
+    ],
+    "js#linefor": [
+      "src/receipt.js#lineFor"
+    ],
+    "js#loadextra": [
+      "src/main.js#loadExtra"
+    ],
+    "js#multiply": [
+      "src/math.js#multiply"
+    ],
+    "js#receiptlines": [
+      "src/receipt.js#receiptLines"
+    ],
+    "js#tax_rate": [
+      "src/constants.js#TAX_RATE"
+    ],
+    "js#titlecase": [
+      "src/utils/string.js#titleCase"
+    ],
+    "kmp": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "knuth-morris-pratt": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "label": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "label.": [
+      "src/main.js#checkout"
+    ],
+    "length": [
+      "module:src/kmp.js",
+      "module:src/summary.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/summary.js",
+      "src/summary.js#itemCount"
+    ],
+    "letter": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "line": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
+    ],
+    "linefor": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines"
+    ],
+    "lines": [
+      "module:src/main.js",
+      "module:src/utils/join.js",
+      "src/main.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "lines.": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines"
+    ],
+    "list": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines"
+    ],
+    "loadextra": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#loadExtra"
+    ],
+    "log": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "logs": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "lovelace": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER"
+    ],
+    "main": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/main.js#checkout",
+      "src/main.js#loadExtra"
+    ],
+    "map": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines"
+    ],
+    "maps": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines"
+    ],
+    "match": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "matches": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "math": [
+      "module:src/main.js",
+      "module:src/math.js",
+      "src/main.js",
+      "src/main.js#loadExtra",
+      "src/math.js",
+      "src/math.js#add",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax",
+      "src/math.js#multiply"
+    ],
+    "math.js": [
+      "src/main.js#loadExtra"
+    ],
+    "mathematical": [
+      "module:src/math.js",
+      "src/math.js"
+    ],
+    "menu": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "mismatch.": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "module": [
+      "module:src/constants.js",
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/math.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js"
+    ],
+    "module.": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#loadExtra"
+    ],
+    "muffin": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "multiplied": [
+      "src/math.js#applyDiscount"
+    ],
+    "multiply": [
+      "module:src/math.js",
+      "src/math.js",
+      "src/math.js#multiply"
+    ],
+    "name": [
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "src/constants.js#APP_NAME",
+      "src/customer.js",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "name.": [
+      "module:src/customer.js",
+      "src/customer.js#greet"
+    ],
+    "named": [
+      "src/customer.js#CUSTOMER"
+    ],
+    "newline": [
+      "module:src/utils/join.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "objects": [
+      "src/main.js#ITEMS"
+    ],
+    "of": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/main.js",
+      "src/math.js#applyTax",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines",
+      "src/summary.js",
+      "src/summary.js#itemCount",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "on": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "or": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "original": [
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax"
+    ],
+    "over": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines"
+    ],
+    "parameter": [
+      "src/customer.js#greet",
+      "src/summary.js#itemCount"
+    ],
+    "parameter.": [
+      "src/customer.js"
+    ],
+    "parameters": [
+      "src/math.js#add",
+      "src/math.js#multiply"
+    ],
+    "pattern": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "places": [
+      "module:src/format.js",
+      "module:src/receipt.js",
+      "src/format.js",
+      "src/receipt.js"
+    ],
+    "places.": [
+      "src/format.js#formatMoney",
+      "src/receipt.js#lineFor"
+    ],
+    "prefix": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "prefixed": [
+      "module:src/format.js",
+      "src/format.js",
+      "src/format.js#formatMoney"
+    ],
+    "price": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#applyDiscount",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
+    ],
+    "prices": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "prices.": [
+      "src/main.js#ITEMS"
+    ],
+    "product": [
+      "src/math.js#applyTax"
+    ],
+    "product.": [
+      "src/math.js#multiply"
+    ],
+    "provided": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#greet",
+      "src/main.js#checkout",
+      "src/receipt.js#receiptLines",
+      "src/summary.js#header"
+    ],
+    "rate": [
+      "module:src/math.js",
+      "src/math.js",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax"
+    ],
+    "re-exports": [
+      "module:src/utils/index.js",
+      "src/utils/index.js"
+    ],
+    "readablestreamdefaultcontroller": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "receipt": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines"
+    ],
+    "receiptlines": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/receipt.js#receiptLines"
+    ],
+    "reduce": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "regular": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "replace": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "replacement.": [
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "representing": [
+      "src/main.js#ITEMS"
+    ],
+    "resetting": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "respective": [
+      "src/main.js#ITEMS"
+    ],
+    "returns": [
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/summary.js",
+      "module:src/utils/join.js",
+      "src/customer.js",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/main.js#checkout",
+      "src/math.js#add",
+      "src/math.js#multiply",
+      "src/summary.js",
+      "src/summary.js#itemCount",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "set": [
+      "module:src/customer.js"
+    ],
+    "sign": [
+      "src/format.js#formatMoney"
+    ],
+    "sign.": [
+      "module:src/format.js",
+      "src/format.js"
+    ],
+    "single": [
+      "module:src/utils/join.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "src": [
+      "module:src/constants.js",
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/math.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/constants.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/main.js#checkout",
+      "src/main.js#loadExtra",
+      "src/math.js",
+      "src/math.js#add",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax",
+      "src/math.js#multiply",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/summary.js#itemCount",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "src/constants.js": [
+      "module:src/constants.js",
+      "src/constants.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE"
+    ],
+    "src/customer.js": [
+      "module:src/customer.js",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/customer.js#greet"
+    ],
+    "src/format.js": [
+      "module:src/format.js",
+      "src/format.js",
+      "src/format.js#formatMoney"
+    ],
+    "src/kmp.js": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "src/main.js": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/main.js#checkout",
+      "src/main.js#loadExtra"
+    ],
+    "src/math.js": [
+      "module:src/math.js",
+      "src/math.js",
+      "src/math.js#add",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax",
+      "src/math.js#multiply"
+    ],
+    "src/receipt.js": [
+      "module:src/receipt.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines"
+    ],
+    "src/summary.js": [
+      "module:src/summary.js",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/summary.js#itemCount"
+    ],
+    "src/utils/index.js": [
+      "module:src/utils/index.js",
+      "src/utils/index.js"
+    ],
+    "src/utils/join.js": [
+      "module:src/utils/join.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "src/utils/string.js": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "string": [
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/main.js#checkout",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "subtotal": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "subtracting": [
+      "src/math.js",
+      "src/math.js#applyDiscount"
+    ],
+    "sum": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "sum.": [
+      "src/math.js#add"
+    ],
+    "summary": [
+      "module:src/main.js",
+      "module:src/summary.js",
+      "src/main.js",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/summary.js#itemCount"
+    ],
+    "summing": [
+      "src/main.js#checkout"
+    ],
+    "table": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "table.": [
+      "src/kmp.js#kmp"
+    ],
+    "takes": [
+      "module:src/utils/join.js",
+      "src/customer.js#greet",
+      "src/format.js#formatMoney",
+      "src/kmp.js#kmp",
+      "src/math.js#add",
+      "src/math.js#multiply",
+      "src/summary.js#itemCount",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines"
+    ],
+    "tax": [
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#applyTax"
+    ],
+    "tax_rate": [
+      "module:src/constants.js",
+      "module:src/main.js",
+      "src/constants.js",
+      "src/constants.js#TAX_RATE",
+      "src/main.js",
+      "src/main.js#checkout"
+    ],
+    "taxed": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "tea": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "text": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "that": [
+      "module:src/customer.js",
+      "module:src/main.js",
+      "module:src/utils/string.js",
+      "src/customer.js",
+      "src/main.js",
+      "src/summary.js#itemCount"
+    ],
+    "the": [
+      "module:src/constants.js",
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/math.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#TAX_RATE",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/main.js#loadExtra",
+      "src/math.js",
+      "src/math.js#add",
+      "src/math.js#applyDiscount",
+      "src/math.js#applyTax",
+      "src/math.js#multiply",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/summary.js#itemCount",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "the `greet` function takes a `name` parameter and returns a string concatenating \"hello \" with the provided name": [
+      "src/customer.js#greet"
+    ],
+    "the add function takes two parameters, a and b, and returns their sum": [
+      "src/math.js#add"
+    ],
+    "the applydiscount function calculates the final price by subtracting the discount (amount multiplied by rate) from the original amount": [
+      "src/math.js#applyDiscount"
+    ],
+    "the applytax function calculates the total amount after tax by adding the product of the amount and the tax rate to the original amount": [
+      "src/math.js#applyTax"
+    ],
+    "the checkout function calculates the final price by summing the provided prices, applying a discount and tax, and returns a formatted string combining the total amount and the title-cased label": [
+      "src/main.js#checkout"
+    ],
+    "the constant tax_rate is defined with a value of 0": [
+      "src/constants.js#TAX_RATE"
+    ],
+    "the file defines a checkout function that calculates a discounted and taxed total from a list of prices, along with a constant array of menu items and a dynamic import function for the math module": [
+      "src/main.js"
+    ],
+    "the file defines a constant customer with the value \"ada lovelace\" and exports a greet function that returns a greeting string by concatenating \"hello \" with a provided name parameter": [
+      "src/customer.js"
+    ],
+    "the file exports four mathematical utility functions": [
+      "src/math.js"
+    ],
+    "the file exports itemcount, which returns the length of an items array, and header, which generates a greeting string by combining a title-cased customer name with the total item count": [
+      "src/summary.js"
+    ],
+    "the file exports linefor, which formats a receipt line by combining the title-cased item name with its price to two decimal places, and receiptlines, which maps the linefor function over an array of items to generate a list of receipt lines": [
+      "src/receipt.js"
+    ],
+    "the formatmoney function formats a given amount to two decimal places and returns a string prefixed with the application name and a dollar sign": [
+      "module:src/format.js",
+      "src/format.js"
+    ],
+    "the formatmoney function takes an amount and returns a string prefixed with the application name and a dollar sign, with the amount formatted to two decimal places": [
+      "src/format.js#formatMoney"
+    ],
+    "the header function generates a greeting string by combining a title-cased customer name with the total item count from the provided items array": [
+      "src/summary.js#header"
+    ],
+    "the itemcount function takes an array of items as a parameter and returns the length of that array": [
+      "src/summary.js#itemCount"
+    ],
+    "the join function in src": [
+      "module:src/utils/join.js"
+    ],
+    "the joinlines function takes an array of lines and returns a single string with the elements joined by newline characters": [
+      "src/utils/join.js"
+    ],
+    "the joinlines function takes an array of lines as input and returns a single string where the elements are joined by newline characters": [
+      "src/utils/join.js#joinLines"
+    ],
+    "the kmp function implements the knuth-morris-pratt algorithm by computing a prefix table for the pattern and iterating through the text to find matches, advancing indices on a match or resetting the pattern index based on the prefix table on a mismatch": [
+      "module:src/kmp.js",
+      "src/kmp.js"
+    ],
+    "the kmp function takes a pattern and text, computes the prefix table for the pattern, and iterates through the text to find matches by advancing indices or resetting the pattern index based on the prefix table": [
+      "src/kmp.js#kmp"
+    ],
+    "the linefor function formats a receipt line by combining the title-cased item name with its price formatted to two decimal places": [
+      "src/receipt.js#lineFor"
+    ],
+    "the loadextra function dynamically imports the math": [
+      "src/main.js#loadExtra"
+    ],
+    "the module defines a checkout function that calculates a discounted and taxed total from a list of prices, along with a constant array of menu items and a dynamic import function for the math module": [
+      "module:src/main.js"
+    ],
+    "the module defines and exports three constants": [
+      "module:src/constants.js"
+    ],
+    "the module exports a constant customer set to \"ada lovelace\" and a greet function that returns a greeting string by concatenating \"hello \" with a provided name": [
+      "module:src/customer.js"
+    ],
+    "the module exports a titlecase function that converts the first letter of each word in a string to uppercase using a regular expression": [
+      "module:src/utils/string.js"
+    ],
+    "the module exports four mathematical utility function": [
+      "module:src/math.js"
+    ],
+    "the module exports itemcount, which returns the length of an items array, and header, which generates a greeting string by combining a title-cased customer name with the total item count": [
+      "module:src/summary.js"
+    ],
+    "the module exports linefor, which formats a receipt line by combining the title-cased item name with its price to two decimal places, and receiptlines, which maps the linefor function over an array of items to generate a list of receipt lines": [
+      "module:src/receipt.js"
+    ],
+    "the multiply function takes two parameters, a and b, and returns their product": [
+      "src/math.js#multiply"
+    ],
+    "the receipt function maps over the provided items array, applying the linefor function to each element to generate a list of receipt lines": [
+      "src/receipt.js#receiptLines"
+    ],
+    "the titlecase function converts the first letter of each word in the input string to uppercase using a regular expression replacement": [
+      "src/utils/string.js#titleCase"
+    ],
+    "the titlecase function in src": [
+      "src/utils/string.js"
+    ],
+    "their": [
+      "src/main.js#ITEMS",
+      "src/math.js#add",
+      "src/math.js#multiply"
+    ],
+    "this": [
+      "module:src/utils/index.js",
+      "src/utils/index.js"
+    ],
+    "this file re-exports the joinlines function from ": [
+      "src/utils/index.js"
+    ],
+    "this module re-exports the joinlines function from ": [
+      "module:src/utils/index.js"
+    ],
+    "three": [
+      "module:src/constants.js",
+      "src/constants.js",
+      "src/main.js#ITEMS"
+    ],
+    "through": [
+      "module:src/kmp.js",
+      "src/kmp.js",
+      "src/kmp.js#kmp"
+    ],
+    "till": [
+      "module:src/constants.js",
+      "src/constants.js",
+      "src/constants.js#APP_NAME"
+    ],
+    "title-cased": [
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "src/main.js#checkout",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "titlecase": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/string.js",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/utils/index.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "to": [
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/kmp.js",
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/utils/string.js",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/kmp.js",
+      "src/kmp.js#kmp",
+      "src/main.js",
+      "src/math.js",
+      "src/math.js#applyTax",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/receipt.js#receiptLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "tofixed": [
+      "module:src/format.js",
+      "module:src/receipt.js",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
+    ],
+    "total": [
+      "module:src/main.js",
+      "module:src/summary.js",
+      "src/main.js",
+      "src/main.js#checkout",
+      "src/math.js",
+      "src/math.js#applyTax",
+      "src/summary.js",
+      "src/summary.js#header"
+    ],
+    "total.": [
+      "module:src/main.js",
+      "src/main.js"
+    ],
+    "touppercase": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "two": [
+      "module:src/format.js",
+      "module:src/receipt.js",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/math.js#add",
+      "src/math.js#multiply",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
+    ],
+    "uppercase": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "using": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "utility": [
+      "module:src/math.js",
+      "src/math.js"
+    ],
+    "utils": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/index.js",
+      "module:src/utils/join.js",
+      "module:src/utils/string.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/summary.js",
+      "src/utils/index.js",
+      "src/utils/join.js",
+      "src/utils/join.js#joinLines",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "value": [
+      "module:src/utils/string.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
+    ],
+    "where": [
+      "src/utils/join.js#joinLines"
+    ],
+    "which": [
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "src/receipt.js",
+      "src/summary.js"
+    ],
+    "with": [
+      "module:src/customer.js",
+      "module:src/format.js",
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "module:src/summary.js",
+      "module:src/utils/join.js",
+      "src/constants.js#APP_NAME",
+      "src/constants.js#DISCOUNT_RATE",
+      "src/constants.js#TAX_RATE",
+      "src/customer.js",
+      "src/customer.js#CUSTOMER",
+      "src/customer.js#greet",
+      "src/format.js",
+      "src/format.js#formatMoney",
+      "src/main.js",
+      "src/main.js#ITEMS",
+      "src/receipt.js",
+      "src/receipt.js#lineFor",
+      "src/summary.js",
+      "src/summary.js#header",
+      "src/utils/join.js"
+    ],
+    "word": [
+      "module:src/utils/string.js",
+      "src/utils/string.js",
+      "src/utils/string.js#titleCase"
     ]
   }
 }

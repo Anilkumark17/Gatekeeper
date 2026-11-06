@@ -12,6 +12,7 @@ CITATION = re.compile(r"`([^`\s]+\.(?:js|jsx|json)):(\d+)`")
     [
         ("sample_inventory.md", "sample_subset"),
         ("react_mini_inventory.md", "react_mini"),
+        ("shop_inventory.md", "shop"),
     ],
 )
 def test_inventory_citations_resolve(inventory_name: str, root_name: str) -> None:

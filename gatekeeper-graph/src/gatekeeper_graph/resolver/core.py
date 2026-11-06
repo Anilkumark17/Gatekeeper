@@ -63,6 +63,35 @@ def resolve_all(
                     target=target,
                     type=EdgeType.CALLS,
                     evidence=Evidence(file=extraction.path, line=call.line),
+                    args=call.args,
+                )
+            )
+        for reference in extraction.references:
+            _named_edge(
+                reference.owner,
+                reference.name,
+                reference.line,
+                extraction.path,
+                bindings,
+                EdgeType.REFERENCES,
+                edges,
+                externals,
+            )
+        for flow in extraction.flows:
+            source = _call_target(flow.source_name, bindings)
+            target = _call_target(flow.target_name, bindings)
+            if source is None or target is None or source == target:
+                continue
+            if source.startswith("external:"):
+                externals.setdefault(source, GraphNode(id=source, kind=NodeKind.EXTERNAL))
+            if target.startswith("external:"):
+                externals.setdefault(target, GraphNode(id=target, kind=NodeKind.EXTERNAL))
+            edges.append(
+                Edge(
+                    source=source,
+                    target=target,
+                    type=EdgeType.FLOWS_INTO,
+                    evidence=Evidence(file=extraction.path, line=flow.line),
                 )
             )
     logger.info(
@@ -252,6 +281,31 @@ def _link(
             source=path,
             target=target,
             type=EdgeType.IMPORTS,
+            evidence=Evidence(file=path, line=line),
+        )
+    )
+
+
+def _named_edge(
+    owner: str,
+    name: str,
+    line: int,
+    path: str,
+    bindings: dict[str, str],
+    edge_type: EdgeType,
+    edges: list[Edge],
+    externals: dict[str, GraphNode],
+) -> None:
+    target = _call_target(name, bindings)
+    if target is None or target == owner:
+        return
+    if target.startswith("external:"):
+        externals.setdefault(target, GraphNode(id=target, kind=NodeKind.EXTERNAL))
+    edges.append(
+        Edge(
+            source=owner,
+            target=target,
+            type=edge_type,
             evidence=Evidence(file=path, line=line),
         )
     )

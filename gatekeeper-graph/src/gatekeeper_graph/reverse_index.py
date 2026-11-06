@@ -15,6 +15,8 @@ DEPENDENCY_TYPES = frozenset(
         EdgeType.READS_CONTEXT,
         EdgeType.PROVIDES_CONTEXT,
         EdgeType.PASSES_PROP,
+        EdgeType.REFERENCES,
+        EdgeType.FLOWS_INTO,
     }
 )
 

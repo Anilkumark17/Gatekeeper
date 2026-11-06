@@ -11,10 +11,12 @@ from pathlib import Path
 from pydantic import BaseModel, ValidationError
 
 from gatekeeper_graph.builder import build_graph
+from gatekeeper_graph.context.commands import add_commands, dispatch
 from gatekeeper_graph.llm import LLMClient, load_config, make_client
 from gatekeeper_graph.llm.errors import LLMOutputInvalid, LLMUnavailable
 from gatekeeper_graph.models import Edge, EdgeType, Graph
 from gatekeeper_graph.reverse_index import dependents
+from gatekeeper_graph.search import search
 from gatekeeper_graph.store import load_graph, save_graph
 from gatekeeper_graph.summarizer import apply_summaries
 from gatekeeper_graph.watcher import watch
@@ -37,18 +39,28 @@ def main(argv: list[str] | None = None) -> int:
 
     commands.add_parser("llm-check", help="check the configured model and print call stats")
 
+    search_command = commands.add_parser("search", help="search a saved graph")
+    search_command.add_argument("graph", type=Path)
+    search_command.add_argument("query")
+
     show = commands.add_parser("show", help="print a saved graph")
     show.add_argument("graph", type=Path)
     show.add_argument("--kind")
     show.add_argument("--node")
+    add_commands(commands)
 
     args = parser.parse_args(argv)
+    handled = dispatch(args)
+    if handled is not None:
+        return handled
     if args.command == "build":
         return _build(args.root, args.out)
     if args.command == "watch":
         return _watch(args.root, args.out)
     if args.command == "llm-check":
         return _llm_check()
+    if args.command == "search":
+        return _search(args.graph, args.query)
     return _show(args.graph, args.kind, args.node)
 
 
@@ -151,6 +163,15 @@ def _llm_check() -> int:
         f"output_tokens={stats.output_tokens} total_ms={stats.total_ms} "
         f"load_ms={stats.load_ms} retries={stats.retries}"
     )
+    return 0
+
+
+def _search(path: Path, query: str) -> int:
+    graph = load_graph(path)
+    matches = search(graph, query)
+    for node_id in matches:
+        print(node_id)
+    print(f"matches={len(matches)}")
     return 0
 
 

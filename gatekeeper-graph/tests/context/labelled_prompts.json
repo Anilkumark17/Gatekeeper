@@ -1,0 +1,122 @@
+[
+  {
+    "question": "the receipt shows customer names in the wrong case",
+    "expected_problem_type": "bug",
+    "expected_key_phrases": [["receipt"], ["case"], ["names"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "llm"
+  },
+  {
+    "question": "checkout total is too high",
+    "expected_problem_type": "bug",
+    "expected_key_phrases": [["checkout"], ["total"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "llm"
+  },
+  {
+    "question": "TypeError: item name is undefined when printing the receipt",
+    "expected_problem_type": "bug",
+    "expected_key_phrases": [["receipt"], ["undefined"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "llm"
+  },
+  {
+    "question": "TypeError: item.name is undefined in `src/receipt.js`",
+    "expected_problem_type": "bug",
+    "expected_key_phrases": [["src/receipt.js"], ["undefined"]],
+    "expected_files": ["src/receipt.js"],
+    "expected_frames": [],
+    "expected_route": "rules"
+  },
+  {
+    "question": "at lineFor (src/receipt.js:4:12) the name looks wrong",
+    "expected_problem_type": "bug",
+    "expected_key_phrases": [["linefor"], ["receipt"], ["wrong"]],
+    "expected_files": ["src/receipt.js"],
+    "expected_frames": [{"name": "lineFor", "file": "src/receipt.js", "line": 4}],
+    "expected_route": "rules"
+  },
+  {
+    "question": "at checkout (src/main.js:10:3) TypeError while discounting",
+    "expected_problem_type": "bug",
+    "expected_key_phrases": [["checkout"], ["typeerror"]],
+    "expected_files": ["src/main.js"],
+    "expected_frames": [{"name": "checkout", "file": "src/main.js", "line": 10}],
+    "expected_route": "rules"
+  },
+  {
+    "question": "what would a change to the greeting affect",
+    "expected_problem_type": "impact",
+    "expected_key_phrases": [["greeting"], ["affect"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "llm"
+  },
+  {
+    "question": "what uses `titleCase`",
+    "expected_problem_type": "impact",
+    "expected_key_phrases": [["titlecase"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "rules"
+  },
+  {
+    "question": "what depends on `src/math.js`",
+    "expected_problem_type": "impact",
+    "expected_key_phrases": [["src/math.js"]],
+    "expected_files": ["src/math.js"],
+    "expected_frames": [],
+    "expected_route": "rules"
+  },
+  {
+    "question": "rename `titleCase` to startCase",
+    "expected_problem_type": "change",
+    "expected_key_phrases": [["titlecase"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "rules"
+  },
+  {
+    "question": "add a footer line to the printed receipt",
+    "expected_problem_type": "change",
+    "expected_key_phrases": [["add"], ["footer"], ["receipt"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "llm"
+  },
+  {
+    "question": "update `src/constants.js` and remove the old rate",
+    "expected_problem_type": "change",
+    "expected_key_phrases": [["src/constants.js"]],
+    "expected_files": ["src/constants.js"],
+    "expected_frames": [],
+    "expected_route": "rules"
+  },
+  {
+    "question": "explain `checkout`",
+    "expected_problem_type": "explain",
+    "expected_key_phrases": [["checkout"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "rules"
+  },
+  {
+    "question": "how does the receipt build each line",
+    "expected_problem_type": "explain",
+    "expected_key_phrases": [["receipt"], ["build"], ["line"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "llm"
+  },
+  {
+    "question": "where is the tax rate defined",
+    "expected_problem_type": "explain",
+    "expected_key_phrases": [["tax"], ["rate"]],
+    "expected_files": [],
+    "expected_frames": [],
+    "expected_route": "llm"
+  }
+]

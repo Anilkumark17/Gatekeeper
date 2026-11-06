@@ -10,9 +10,10 @@ from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
 
 SYMBOL_SEP = "#"
 EXTERNAL_PREFIX = "external:"
-GRAPH_SCHEMA_VERSION = 1
+MODULE_PREFIX = "module:"
+GRAPH_SCHEMA_VERSION = 2
 
-NodeCategory = Literal["file", "symbol", "external"]
+NodeCategory = Literal["file", "symbol", "external", "module"]
 
 
 class NodeKind(StrEnum):
@@ -25,6 +26,7 @@ class NodeKind(StrEnum):
     ROUTE = "route"
     TEST = "test"
     EXTERNAL = "external"
+    MODULE = "module"
 
 
 class EdgeType(StrEnum):
@@ -38,9 +40,11 @@ class EdgeType(StrEnum):
     TESTED_BY = "tested_by"
     CONTAINS = "contains"
     UNRESOLVED = "unresolved"
+    REFERENCES = "references"
+    FLOWS_INTO = "flows_into"
 
 
-_SYMBOL_KINDS = frozenset(NodeKind) - {NodeKind.FILE, NodeKind.EXTERNAL}
+_SYMBOL_KINDS = frozenset(NodeKind) - {NodeKind.FILE, NodeKind.EXTERNAL, NodeKind.MODULE}
 
 
 def make_file_id(path: str) -> str:
@@ -75,8 +79,16 @@ def make_external_id(package: str) -> str:
     return f"{EXTERNAL_PREFIX}{package}"
 
 
+def make_module_id(path: str) -> str:
+    """Return ``module:path`` for the module that owns a file."""
+    return f"{MODULE_PREFIX}{make_file_id(path)}"
+
+
 def parse_node_id(node_id: str) -> tuple[NodeCategory, str, str | None]:
-    """Split a node id into file, symbol, or external parts."""
+    """Split a node id into file, symbol, external, or module parts."""
+    if node_id.startswith(MODULE_PREFIX):
+        path = node_id[len(MODULE_PREFIX) :]
+        return ("module", make_file_id(path), None)
     if node_id.startswith(EXTERNAL_PREFIX):
         package = node_id[len(EXTERNAL_PREFIX) :]
         if not package:
@@ -135,6 +147,8 @@ class Node(BaseModel):
     summary: str | None = None
     summary_hash: str | None = None
     stale: bool = True
+    tokens: tuple[str, ...] = ()
+    literals: tuple[str, ...] = ()
 
     @model_validator(mode="after")
     def _shape(self) -> Self:
@@ -145,11 +159,15 @@ class Node(BaseModel):
             if category != "file" or self.file != self.id:
                 raise ValueError(f"file node file must equal id id={self.id}")
             return self
+        if self.kind is NodeKind.MODULE:
+            if category != "module" or self.file != path or self.range is None or self.hash is None:
+                raise ValueError(f"module node requires file, range, and hash id={self.id}")
+            return self
         if self.kind is NodeKind.EXTERNAL:
             if category != "external" or self.file is not None or self.range is not None:
                 raise ValueError(f"external node must not carry file data id={self.id}")
-            if self.hash is not None:
-                raise ValueError(f"external node must not carry a hash id={self.id}")
+            if self.hash is not None or self.tokens or self.literals:
+                raise ValueError(f"external node must not carry source data id={self.id}")
             return self
         if self.kind not in _SYMBOL_KINDS or category != "symbol" or name is None:
             raise ValueError(f"symbol node id is invalid id={self.id} kind={self.kind}")
@@ -167,6 +185,7 @@ class Edge(BaseModel):
     evidence: Evidence
     props: tuple[str, ...] = ()
     raw: str | None = None
+    args: tuple[str, ...] = ()
 
     @model_validator(mode="after")
     def _rules(self) -> Self:
@@ -178,6 +197,8 @@ class Edge(BaseModel):
             raise ValueError("passes_prop edge requires props")
         if self.type is not EdgeType.PASSES_PROP and self.props:
             raise ValueError("props are only allowed on passes_prop edges")
+        if self.type is not EdgeType.CALLS and self.args:
+            raise ValueError("args are only allowed on calls edges")
         if self.source == self.target and self.type is not EdgeType.CALLS:
             raise ValueError(f"edge source equals target type={self.type}")
         return self
@@ -194,6 +215,7 @@ class Graph(BaseModel):
     nodes: dict[str, Node] = Field(default_factory=dict)
     edges: list[Edge] = Field(default_factory=list)
     reverse: dict[str, list[str]] = Field(default_factory=dict)
+    search: dict[str, list[str]] = Field(default_factory=dict)
 
     @model_validator(mode="after")
     def _check(self) -> Self:
@@ -232,6 +254,7 @@ def graph_to_json(graph: Graph) -> str:
         ),
     )
     payload["reverse"] = {key: payload["reverse"][key] for key in sorted(payload["reverse"])}
+    payload["search"] = {key: payload["search"][key] for key in sorted(payload["search"])}
     return json.dumps(payload, indent=2) + "\n"
 
 

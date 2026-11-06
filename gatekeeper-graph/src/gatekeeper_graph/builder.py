@@ -14,6 +14,7 @@ from gatekeeper_graph.parser.core import parse_file
 from gatekeeper_graph.parser.languages import language_for_path
 from gatekeeper_graph.resolver import resolve_all
 from gatekeeper_graph.reverse_index import compute_reverse
+from gatekeeper_graph.search import build_search_index
 
 logger = logging.getLogger(__name__)
 
@@ -74,6 +75,7 @@ def build_graph(root: Path) -> BuildResult:
         edges=combined,
         reverse=compute_reverse(combined),
     )
+    graph.search = build_search_index(graph)
     counts: dict[str, int] = {}
     for node in graph.nodes.values():
         counts[node.kind.value] = counts.get(node.kind.value, 0) + 1

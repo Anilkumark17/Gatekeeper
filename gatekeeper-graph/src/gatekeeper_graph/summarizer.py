@@ -12,6 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from gatekeeper_graph.llm import LLMClient, make_client
 from gatekeeper_graph.llm.errors import LLMOutputInvalid, LLMUnavailable
 from gatekeeper_graph.models import Graph, Node, NodeKind
+from gatekeeper_graph.search import build_search_index
 
 logger = logging.getLogger(__name__)
 
@@ -51,9 +52,12 @@ def apply_summaries(
     reused = 0
     written = 0
     skipped = 0
-    for node in graph.nodes.values():
-        if node.kind in {NodeKind.FILE, NodeKind.EXTERNAL}:
-            continue
+    ordered = [
+        *[node for node in graph.nodes.values() if _is_symbol(node)],
+        *[node for node in graph.nodes.values() if node.kind is NodeKind.FILE and node.hash],
+        *[node for node in graph.nodes.values() if node.kind is NodeKind.MODULE and node.hash],
+    ]
+    for node in ordered:
         prior = prior_nodes.get(node.id)
         if prior is not None and prior.hash == node.hash and prior.summary:
             node.summary = prior.summary
@@ -62,7 +66,7 @@ def apply_summaries(
             reused += 1
             continue
         try:
-            text = _request_summary(client, node, root)
+            text = _request_summary(client, node, root, graph)
         except (LLMUnavailable, LLMOutputInvalid):
             logger.info("summary skipped node=%s", node.id)
             if prior is not None and prior.summary:
@@ -75,26 +79,52 @@ def apply_summaries(
         node.summary_hash = _summary_hash(text)
         node.stale = False
         written += 1
+    graph.search = build_search_index(graph)
     return SummaryStats(reused=reused, written=written, skipped=skipped)
 
 
-def _request_summary(client: LLMClient | None, node: Node, root: Path) -> str:
+def _is_symbol(node: Node) -> bool:
+    structural = {NodeKind.FILE, NodeKind.MODULE, NodeKind.EXTERNAL}
+    return node.kind not in structural and node.hash is not None
+
+
+def _request_summary(client: LLMClient | None, node: Node, root: Path, graph: Graph) -> str:
     if client is None:
         raise LLMUnavailable("summary client unavailable")
-    parsed, _stats = client.generate_structured(_SYSTEM, _user_prompt(node, root), NodeSummary)
+    parsed, _stats = client.generate_structured(
+        _SYSTEM,
+        _user_prompt(node, root, graph),
+        NodeSummary,
+    )
     return parsed.summary.strip()
 
 
-def _user_prompt(node: Node, root: Path) -> str:
+def _user_prompt(node: Node, root: Path, graph: Graph) -> str:
     params = ", ".join(node.signature.params)
     return (
         f"id={node.id}\nkind={node.kind.value}\nparams={params}\n\n"
+        f"{_child_summaries(graph, node)}\n\n"
         f"{_source(root, node)}"
     )
 
 
+def _child_summaries(graph: Graph, node: Node) -> str:
+    if node.kind is NodeKind.FILE:
+        lines = [
+            f"{child.id}: {child.summary}"
+            for child in graph.nodes.values()
+            if child.file == node.id and child.summary and _is_symbol(child)
+        ]
+        return "\n".join(sorted(lines))
+    if node.kind is NodeKind.MODULE and node.file is not None:
+        file_node = graph.nodes.get(node.file)
+        if file_node is not None and file_node.summary:
+            return f"{file_node.id}: {file_node.summary}"
+    return ""
+
+
 def _source(root: Path, node: Node) -> str:
-    if node.file is None or node.range is None:
+    if node.file is None:
         return ""
     path = root / node.file
     try:
@@ -102,6 +132,8 @@ def _source(root: Path, node: Node) -> str:
     except OSError:
         logger.info("summary source unreadable node=%s", node.id)
         return ""
+    if node.range is None:
+        return "\n".join(lines)
     return "\n".join(lines[node.range.start - 1 : node.range.end])
 
 

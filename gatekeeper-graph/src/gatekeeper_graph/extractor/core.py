@@ -11,11 +11,21 @@ from gatekeeper_graph.extractor.types import (
     CallRef,
     ExportRef,
     FileExtraction,
+    FlowRef,
     ImportedName,
     ImportKind,
     ImportRef,
+    ReferenceRef,
 )
-from gatekeeper_graph.models import Edge, EdgeType, Evidence, LineRange, NodeKind, Signature
+from gatekeeper_graph.models import (
+    Edge,
+    EdgeType,
+    Evidence,
+    LineRange,
+    NodeKind,
+    Signature,
+    make_module_id,
+)
 from gatekeeper_graph.models import Node as GraphNode
 from gatekeeper_graph.parser.core import ParsedFile
 from gatekeeper_graph.parser.nodes import end_line_of, field_text, find_all, line_of, text_of
@@ -26,8 +36,15 @@ logger = logging.getLogger(__name__)
 def extract_file(parsed: ParsedFile) -> FileExtraction:
     """Return every fact that can be known without looking at other files."""
     symbols = _symbols(parsed)
-    nodes = [_file_node(parsed), *(_symbol_node(parsed, item) for item in symbols)]
-    contains = tuple(_contains_edge(parsed.path, item) for item in symbols)
+    nodes = [
+        _file_node(parsed),
+        _module_node(parsed),
+        *(_symbol_node(parsed, item) for item in symbols),
+    ]
+    contains = (
+        _module_contains(parsed.path),
+        *(_contains_edge(parsed.path, item) for item in symbols),
+    )
     logger.info("extracted path=%s symbols=%s", parsed.path, len(symbols))
     return FileExtraction(
         path=parsed.path,
@@ -36,6 +53,8 @@ def extract_file(parsed: ParsedFile) -> FileExtraction:
         imports=_imports(parsed, symbols),
         exports=_exports(parsed),
         calls=_calls(parsed, symbols),
+        references=_references(parsed, symbols),
+        flows=_flows(parsed),
     )
 
 
@@ -130,7 +149,37 @@ def _params(node: Node, parsed: ParsedFile) -> tuple[str, ...]:
 
 
 def _file_node(parsed: ParsedFile) -> GraphNode:
-    return GraphNode(id=parsed.path, kind=NodeKind.FILE, file=parsed.path)
+    return GraphNode(
+        id=parsed.path,
+        kind=NodeKind.FILE,
+        file=parsed.path,
+        hash=_file_hash(parsed.source),
+        tokens=_tokens(parsed.root, parsed.source),
+        literals=_literals(parsed.root, parsed.source),
+    )
+
+
+def _module_node(parsed: ParsedFile) -> GraphNode:
+    text = parsed.source.decode("utf-8", errors="replace")
+    line_count = max(len(text.splitlines()), 1)
+    return GraphNode(
+        id=make_module_id(parsed.path),
+        kind=NodeKind.MODULE,
+        file=parsed.path,
+        range=LineRange(start=1, end=line_count),
+        hash=_file_hash(parsed.source),
+        tokens=_tokens(parsed.root, parsed.source),
+        literals=_literals(parsed.root, parsed.source),
+    )
+
+
+def _module_contains(path: str) -> Edge:
+    return Edge(
+        source=make_module_id(path),
+        target=path,
+        type=EdgeType.CONTAINS,
+        evidence=Evidence(file=path, line=1),
+    )
 
 
 def _symbol_node(parsed: ParsedFile, symbol: _Symbol) -> GraphNode:
@@ -141,6 +190,8 @@ def _symbol_node(parsed: ParsedFile, symbol: _Symbol) -> GraphNode:
         range=LineRange(start=line_of(symbol.node), end=end_line_of(symbol.node)),
         hash=_hash(symbol.node, parsed.source),
         signature=Signature(params=symbol.params),
+        tokens=_tokens(symbol.node, parsed.source),
+        literals=_literals(symbol.node, parsed.source),
     )
 
 
@@ -154,9 +205,37 @@ def _contains_edge(path: str, symbol: _Symbol) -> Edge:
 
 
 def _hash(node: Node, source: bytes) -> str:
-    text = text_of(node, source).replace("\r\n", "\n").replace("\r", "\n")
+    return _file_hash(text_of(node, source).encode("utf-8"))
+
+
+def _file_hash(source: bytes) -> str:
+    text = source.decode("utf-8", errors="replace").replace("\r\n", "\n").replace("\r", "\n")
     normalized = "\n".join(line.rstrip() for line in text.split("\n"))
     return hashlib.sha1(normalized.encode("utf-8")).hexdigest()
+
+
+def _tokens(node: Node, source: bytes) -> tuple[str, ...]:
+    names = [
+        text_of(item, source)
+        for item in find_all(node, "identifier", "property_identifier")
+        if text_of(item, source).isidentifier()
+    ]
+    return tuple(sorted(set(names)))
+
+
+def _literals(node: Node, source: bytes) -> tuple[str, ...]:
+    found: list[str] = []
+    for item in find_all(node, "string", "number", "template_string"):
+        fragments = [
+            text_of(child, source)
+            for child in item.named_children
+            if child.type == "string_fragment"
+        ]
+        if fragments:
+            found.extend(fragments)
+        elif item.type == "number":
+            found.append(text_of(item, source))
+    return tuple(sorted(set(found)))
 
 
 def _imports(parsed: ParsedFile, symbols: list[_Symbol]) -> tuple[ImportRef, ...]:
@@ -310,9 +389,103 @@ def _calls(parsed: ParsedFile, symbols: list[_Symbol]) -> tuple[CallRef, ...]:
         else:
             continue
         refs.append(
-            CallRef(owner=_owner(call, parsed.path, symbols), callee=callee, line=line_of(call))
+            CallRef(
+                owner=_owner(call, parsed.path, symbols),
+                callee=callee,
+                line=line_of(call),
+                args=_call_args(call, parsed.source),
+            )
         )
     return tuple(refs)
+
+
+def _call_args(call: Node, source: bytes) -> tuple[str, ...]:
+    arguments = call.child_by_field_name("arguments")
+    if arguments is None:
+        return ()
+    return tuple(text_of(child, source) for child in arguments.named_children)
+
+
+def _references(parsed: ParsedFile, symbols: list[_Symbol]) -> tuple[ReferenceRef, ...]:
+    refs: list[ReferenceRef] = []
+    for ident in find_all(parsed.root, "identifier"):
+        if _in_import_or_export_clause(ident):
+            continue
+        if _is_callee(ident) or _is_declared_name(ident):
+            continue
+        name = text_of(ident, parsed.source)
+        if not name.isidentifier():
+            continue
+        refs.append(
+            ReferenceRef(owner=_owner(ident, parsed.path, symbols), name=name, line=line_of(ident))
+        )
+    return tuple(refs)
+
+
+def _flows(parsed: ParsedFile) -> tuple[FlowRef, ...]:
+    refs: list[FlowRef] = []
+    for call in find_all(parsed.root, "call_expression"):
+        function = call.named_children[0] if call.named_children else None
+        if function is None or function.type not in {"identifier", "member_expression"}:
+            continue
+        target = text_of(function, parsed.source).split(".", 1)[0]
+        arguments = call.child_by_field_name("arguments")
+        if arguments is None:
+            continue
+        for child in arguments.named_children:
+            if child.type != "identifier":
+                continue
+            refs.append(
+                FlowRef(
+                    source_name=text_of(child, parsed.source),
+                    target_name=target,
+                    line=line_of(child),
+                )
+            )
+    for declarator in find_all(parsed.root, "variable_declarator"):
+        name = field_text(declarator, "name", parsed.source)
+        value = declarator.child_by_field_name("value")
+        if name is None or value is None:
+            continue
+        source_name = _flow_source(value, parsed.source)
+        if source_name is None:
+            continue
+        refs.append(FlowRef(source_name=source_name, target_name=name, line=line_of(declarator)))
+    return tuple(refs)
+
+
+def _flow_source(value: Node, source: bytes) -> str | None:
+    if value.type == "identifier":
+        return text_of(value, source)
+    if value.type == "call_expression" and value.named_children:
+        function = value.named_children[0]
+        if function.type in {"identifier", "member_expression"}:
+            return text_of(function, source).split(".", 1)[0]
+    return None
+
+
+def _in_import_or_export_clause(node: Node) -> bool:
+    current = node.parent
+    while current is not None:
+        if current.type in {"import_statement", "export_statement"}:
+            declaration = current.child_by_field_name("declaration")
+            return not (declaration is not None and _encloses(declaration, node))
+        current = current.parent
+    return False
+
+
+def _is_callee(node: Node) -> bool:
+    parent = node.parent
+    if parent is None or parent.type != "call_expression" or not parent.named_children:
+        return False
+    return parent.named_children[0] == node
+
+
+def _is_declared_name(node: Node) -> bool:
+    parent = node.parent
+    if parent is None:
+        return False
+    return parent.child_by_field_name("name") == node
 
 
 def _owner(node: Node, path: str, symbols: list[_Symbol]) -> str:

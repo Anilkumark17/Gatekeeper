@@ -51,6 +51,23 @@ class CallRef(BaseModel):
     owner: str
     callee: str
     line: int = Field(ge=1)
+    args: tuple[str, ...] = ()
+
+
+class ReferenceRef(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    owner: str
+    name: str
+    line: int = Field(ge=1)
+
+
+class FlowRef(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    source_name: str
+    target_name: str
+    line: int = Field(ge=1)
 
 
 class FileExtraction(BaseModel):
@@ -62,3 +79,5 @@ class FileExtraction(BaseModel):
     imports: tuple[ImportRef, ...]
     exports: tuple[ExportRef, ...]
     calls: tuple[CallRef, ...]
+    references: tuple[ReferenceRef, ...] = ()
+    flows: tuple[FlowRef, ...] = ()

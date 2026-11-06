@@ -1,0 +1,627 @@
+{
+  "$defs": {
+    "AnalysisInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "route": {
+          "enum": [
+            "llm",
+            "rules"
+          ],
+          "title": "Route",
+          "type": "string"
+        },
+        "fallback_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fallback Reason"
+        },
+        "stats": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CallStats"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "route",
+        "fallback_reason",
+        "stats"
+      ],
+      "title": "AnalysisInfo",
+      "type": "object"
+    },
+    "CallStats": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "title": "Backend",
+          "type": "string"
+        },
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "prompt_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Prompt Tokens"
+        },
+        "output_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Output Tokens"
+        },
+        "total_ms": {
+          "title": "Total Ms",
+          "type": "number"
+        },
+        "load_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Load Ms"
+        },
+        "retries": {
+          "title": "Retries",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "backend",
+        "model",
+        "prompt_tokens",
+        "output_tokens",
+        "total_ms",
+        "load_ms",
+        "retries"
+      ],
+      "title": "CallStats",
+      "type": "object"
+    },
+    "ChangeNote": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "text"
+      ],
+      "title": "ChangeNote",
+      "type": "object"
+    },
+    "Confidence": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "Gap": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "detail"
+      ],
+      "title": "Gap",
+      "type": "object"
+    },
+    "Intent": {
+      "additionalProperties": false,
+      "description": "What the context agent believes the question is asking for.",
+      "properties": {
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "problem_type": {
+          "$ref": "#/$defs/ProblemType"
+        },
+        "observed": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed"
+        },
+        "expected": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected"
+        },
+        "key_phrases": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Key Phrases",
+          "type": "array"
+        },
+        "quoted_text": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Quoted Text",
+          "type": "array"
+        },
+        "backtick_names": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Backtick Names",
+          "type": "array"
+        },
+        "files": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Files",
+          "type": "array"
+        },
+        "frames": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/StackFrame"
+          },
+          "title": "Frames",
+          "type": "array"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        },
+        "source": {
+          "enum": [
+            "llm",
+            "rules"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question",
+        "problem_type",
+        "confidence",
+        "source"
+      ],
+      "title": "Intent",
+      "type": "object"
+    },
+    "PackBudget": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "used": {
+          "title": "Used",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "limit",
+        "used"
+      ],
+      "title": "PackBudget",
+      "type": "object"
+    },
+    "PackEdge": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "type": {
+          "title": "Type",
+          "type": "string"
+        },
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "line": {
+          "title": "Line",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "type",
+        "file",
+        "line"
+      ],
+      "title": "PackEdge",
+      "type": "object"
+    },
+    "PackNode": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "File"
+        },
+        "range": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Range"
+        },
+        "signature": {
+          "title": "Signature",
+          "type": "string"
+        },
+        "summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Summary"
+        },
+        "literals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Literals",
+          "type": "array"
+        },
+        "role": {
+          "title": "Role",
+          "type": "string"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "hops": {
+          "title": "Hops",
+          "type": "integer"
+        },
+        "snippet": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Snippet"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "file",
+        "range",
+        "signature",
+        "summary",
+        "literals",
+        "role",
+        "score",
+        "hops",
+        "snippet"
+      ],
+      "title": "PackNode",
+      "type": "object"
+    },
+    "PackPath": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "node_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Node Ids",
+          "type": "array"
+        },
+        "edge_types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Edge Types",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "node_ids",
+        "edge_types"
+      ],
+      "title": "PackPath",
+      "type": "object"
+    },
+    "PackTests": {
+      "additionalProperties": false,
+      "properties": {
+        "mapped": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Mapped",
+          "type": "object"
+        },
+        "failing": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Failing",
+          "type": "array"
+        }
+      },
+      "required": [
+        "mapped",
+        "failing"
+      ],
+      "title": "PackTests",
+      "type": "object"
+    },
+    "ProblemType": {
+      "enum": [
+        "bug",
+        "impact",
+        "change",
+        "explain",
+        "unknown"
+      ],
+      "title": "ProblemType",
+      "type": "string"
+    },
+    "Snippet": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "title": "End",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "text"
+      ],
+      "title": "Snippet",
+      "type": "object"
+    },
+    "StackFrame": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "file": {
+          "title": "File",
+          "type": "string"
+        },
+        "line": {
+          "minimum": 1,
+          "title": "Line",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "file",
+        "line"
+      ],
+      "title": "StackFrame",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "What the diagnosis agent receives. The context agent does not diagnose.",
+  "properties": {
+    "schema": {
+      "const": "gatekeeper.context.v1",
+      "default": "gatekeeper.context.v1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "question": {
+      "title": "Question",
+      "type": "string"
+    },
+    "intent": {
+      "$ref": "#/$defs/Intent"
+    },
+    "analysis": {
+      "$ref": "#/$defs/AnalysisInfo"
+    },
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/PackNode"
+      },
+      "title": "Nodes",
+      "type": "array"
+    },
+    "edges": {
+      "items": {
+        "$ref": "#/$defs/PackEdge"
+      },
+      "title": "Edges",
+      "type": "array"
+    },
+    "paths": {
+      "items": {
+        "$ref": "#/$defs/PackPath"
+      },
+      "title": "Paths",
+      "type": "array"
+    },
+    "changes": {
+      "items": {
+        "$ref": "#/$defs/ChangeNote"
+      },
+      "title": "Changes",
+      "type": "array"
+    },
+    "tests": {
+      "$ref": "#/$defs/PackTests"
+    },
+    "gaps": {
+      "items": {
+        "$ref": "#/$defs/Gap"
+      },
+      "title": "Gaps",
+      "type": "array"
+    },
+    "trace": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "title": "Trace",
+      "type": "object"
+    },
+    "budget": {
+      "$ref": "#/$defs/PackBudget"
+    },
+    "timings_ms": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Timings Ms",
+      "type": "object"
+    }
+  },
+  "required": [
+    "question",
+    "intent",
+    "analysis",
+    "nodes",
+    "edges",
+    "paths",
+    "changes",
+    "tests",
+    "gaps",
+    "trace",
+    "budget",
+    "timings_ms"
+  ],
+  "title": "ContextPack",
+  "type": "object"
+}
