@@ -1,0 +1,540 @@
+{
+  "version": 1,
+  "root": "C:/Users/anilk/Desktop/coding/Visualize/sample-js",
+  "nodes": {
+    "src/constants.js": {
+      "id": "src/constants.js",
+      "kind": "file",
+      "file": "src/constants.js",
+      "range": null,
+      "hash": null,
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/constants.js#APP_NAME": {
+      "id": "src/constants.js#APP_NAME",
+      "kind": "constant",
+      "file": "src/constants.js",
+      "range": {
+        "start": 2,
+        "end": 2
+      },
+      "hash": "b51c4fdc71f18a00f8671be5c895b3a3690ce277",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/constants.js#TAX_RATE": {
+      "id": "src/constants.js#TAX_RATE",
+      "kind": "constant",
+      "file": "src/constants.js",
+      "range": {
+        "start": 1,
+        "end": 1
+      },
+      "hash": "7e0e6a0d97b5a0f7c4809c62623a736e4f54c2c5",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/format.js": {
+      "id": "src/format.js",
+      "kind": "file",
+      "file": "src/format.js",
+      "range": null,
+      "hash": null,
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/format.js#formatMoney": {
+      "id": "src/format.js#formatMoney",
+      "kind": "function",
+      "file": "src/format.js",
+      "range": {
+        "start": 3,
+        "end": 5
+      },
+      "hash": "8454cbf7680a9ebc5ff2fcff71ac3882e1f968db",
+      "signature": {
+        "props": [],
+        "params": [
+          "amount"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/main.js": {
+      "id": "src/main.js",
+      "kind": "file",
+      "file": "src/main.js",
+      "range": null,
+      "hash": null,
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/main.js#checkout": {
+      "id": "src/main.js#checkout",
+      "kind": "function",
+      "file": "src/main.js",
+      "range": {
+        "start": 6,
+        "end": 10
+      },
+      "hash": "7729579bc01fe2ec56304115277db63648c080c8",
+      "signature": {
+        "props": [],
+        "params": [
+          "label",
+          "prices"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/main.js#loadExtra": {
+      "id": "src/main.js#loadExtra",
+      "kind": "function",
+      "file": "src/main.js",
+      "range": {
+        "start": 12,
+        "end": 12
+      },
+      "hash": "bdcce949efd9c65e235a0cbac8ba2460780bded7",
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/math.js": {
+      "id": "src/math.js",
+      "kind": "file",
+      "file": "src/math.js",
+      "range": null,
+      "hash": null,
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/math.js#add": {
+      "id": "src/math.js#add",
+      "kind": "function",
+      "file": "src/math.js",
+      "range": {
+        "start": 1,
+        "end": 3
+      },
+      "hash": "6c52bd277be44bffb0dd4e5a1b3af4be5765be45",
+      "signature": {
+        "props": [],
+        "params": [
+          "a",
+          "b"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/math.js#applyTax": {
+      "id": "src/math.js#applyTax",
+      "kind": "function",
+      "file": "src/math.js",
+      "range": {
+        "start": 5,
+        "end": 7
+      },
+      "hash": "7085e33efd248b9dce4273f6f90740f86e289eea",
+      "signature": {
+        "props": [],
+        "params": [
+          "amount",
+          "rate"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/math.js#multiply": {
+      "id": "src/math.js#multiply",
+      "kind": "function",
+      "file": "src/math.js",
+      "range": {
+        "start": 9,
+        "end": 9
+      },
+      "hash": "b993b3aef4e9ffa8ddc76cd44780a63875f883db",
+      "signature": {
+        "props": [],
+        "params": [
+          "a",
+          "b"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/utils/index.js": {
+      "id": "src/utils/index.js",
+      "kind": "file",
+      "file": "src/utils/index.js",
+      "range": null,
+      "hash": null,
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/utils/string.js": {
+      "id": "src/utils/string.js",
+      "kind": "file",
+      "file": "src/utils/string.js",
+      "range": null,
+      "hash": null,
+      "signature": {
+        "props": [],
+        "params": [],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    },
+    "src/utils/string.js#titleCase": {
+      "id": "src/utils/string.js#titleCase",
+      "kind": "function",
+      "file": "src/utils/string.js",
+      "range": {
+        "start": 1,
+        "end": 3
+      },
+      "hash": "aa5e3cccc334cb4c983e0bd68e0b2ca96edc0ed1",
+      "signature": {
+        "props": [],
+        "params": [
+          "value"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true
+    }
+  },
+  "edges": [
+    {
+      "from": "src/constants.js",
+      "to": "src/constants.js#APP_NAME",
+      "type": "contains",
+      "evidence": {
+        "file": "src/constants.js",
+        "line": 2
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/constants.js",
+      "to": "src/constants.js#TAX_RATE",
+      "type": "contains",
+      "evidence": {
+        "file": "src/constants.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/format.js",
+      "to": "src/format.js#formatMoney",
+      "type": "contains",
+      "evidence": {
+        "file": "src/format.js",
+        "line": 3
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/format.js",
+      "to": "src/constants.js",
+      "type": "imports",
+      "evidence": {
+        "file": "src/format.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/main.js#checkout",
+      "type": "calls",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 14
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/main.js#checkout",
+      "type": "contains",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 6
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/main.js#loadExtra",
+      "type": "contains",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 12
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/constants.js",
+      "type": "imports",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/format.js",
+      "type": "imports",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 3
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/math.js",
+      "type": "imports",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 2
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js",
+      "to": "src/utils/index.js",
+      "type": "imports",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 4
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js#checkout",
+      "to": "src/format.js#formatMoney",
+      "type": "calls",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 9
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js#checkout",
+      "to": "src/math.js#add",
+      "type": "calls",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 7
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js#checkout",
+      "to": "src/math.js#applyTax",
+      "type": "calls",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 8
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js#checkout",
+      "to": "src/utils/string.js#titleCase",
+      "type": "calls",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 9
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/main.js#loadExtra",
+      "to": "unresolved:./math.js",
+      "type": "unresolved",
+      "evidence": {
+        "file": "src/main.js",
+        "line": 12
+      },
+      "props": [],
+      "raw": "import(./math.js)"
+    },
+    {
+      "from": "src/math.js",
+      "to": "src/math.js#add",
+      "type": "contains",
+      "evidence": {
+        "file": "src/math.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/math.js",
+      "to": "src/math.js#applyTax",
+      "type": "contains",
+      "evidence": {
+        "file": "src/math.js",
+        "line": 5
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/math.js",
+      "to": "src/math.js#multiply",
+      "type": "contains",
+      "evidence": {
+        "file": "src/math.js",
+        "line": 9
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/utils/index.js",
+      "to": "src/utils/string.js",
+      "type": "imports",
+      "evidence": {
+        "file": "src/utils/index.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null
+    },
+    {
+      "from": "src/utils/string.js",
+      "to": "src/utils/string.js#titleCase",
+      "type": "contains",
+      "evidence": {
+        "file": "src/utils/string.js",
+        "line": 1
+      },
+      "props": [],
+      "raw": null
+    }
+  ],
+  "reverse": {
+    "src/constants.js": [
+      "src/format.js",
+      "src/main.js"
+    ],
+    "src/format.js": [
+      "src/main.js"
+    ],
+    "src/format.js#formatMoney": [
+      "src/main.js#checkout"
+    ],
+    "src/main.js#checkout": [
+      "src/main.js"
+    ],
+    "src/math.js": [
+      "src/main.js"
+    ],
+    "src/math.js#add": [
+      "src/main.js#checkout"
+    ],
+    "src/math.js#applyTax": [
+      "src/main.js#checkout"
+    ],
+    "src/utils/index.js": [
+      "src/main.js"
+    ],
+    "src/utils/string.js": [
+      "src/utils/index.js"
+    ],
+    "src/utils/string.js#titleCase": [
+      "src/main.js#checkout"
+    ]
+  }
+}
