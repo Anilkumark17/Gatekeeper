@@ -14,6 +14,13 @@ dependencies = [
     "watchdog>=7.1.0",
 ]
 
+[project.optional-dependencies]
+langchain = [
+    "langchain-core>=0.3.0",
+    "langchain-ollama>=0.3.0",
+    "langchain-groq>=0.3.0",
+]
+
 [project.scripts]
 gatekeeper = "gatekeeper_graph.cli:main"
 
@@ -45,6 +52,18 @@ mypy_path = "src"
 module = ["tree_sitter_typescript", "tree_sitter_javascript", "networkx"]
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = [
+    "langchain_core",
+    "langchain_core.*",
+    "langchain_ollama",
+    "langchain_ollama.*",
+    "langchain_groq",
+    "langchain_groq.*",
+]
+ignore_missing_imports = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = ["ollama: calls a local Ollama server"]

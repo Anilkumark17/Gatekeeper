@@ -31,9 +31,9 @@
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "Defines the application name constant APP_NAME with the value \"Till\".",
+      "summary_hash": "dee98c178802b86f5ffea2c9a5d8613e4aa31852e23d9fcd6b770e58ce0d2110",
+      "stale": false
     },
     "src/constants.js#DISCOUNT_RATE": {
       "id": "src/constants.js#DISCOUNT_RATE",
@@ -49,9 +49,9 @@
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "DISCOUNT_RATE is a constant defined in src/constants.js with a value of 0.1.",
+      "summary_hash": "8d21c7d8bed1085a97b469fc01760f9a38bf842941d92855fe7df8a17ab779dd",
+      "stale": false
     },
     "src/constants.js#TAX_RATE": {
       "id": "src/constants.js#TAX_RATE",
@@ -67,9 +67,9 @@
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "Defines the constant TAX_RATE with a value of 0.08.",
+      "summary_hash": "e5db27464cfabdc448a5e63f84d4f4dc6a2c0359d6a95ad0c99a8a0eb273ff52",
+      "stale": false
     },
     "src/customer.js": {
       "id": "src/customer.js",
@@ -100,9 +100,9 @@
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "Defines a constant named CUSTOMER with the string value \"ada lovelace\".",
+      "summary_hash": "94ff2a5000a572415e9b59c34ee4443b6e9838c16db549d7d7ee37e186bcb04f",
+      "stale": false
     },
     "src/customer.js#greet": {
       "id": "src/customer.js#greet",
@@ -120,9 +120,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The greet function takes a name parameter and returns a string concatenating 'Hello ' with the provided name.",
+      "summary_hash": "c9e4a29dd713a0982d799acc667379154c459a6a825f0abc9daf67e993dcc4e0",
+      "stale": false
     },
     "src/format.js": {
       "id": "src/format.js",
@@ -155,9 +155,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The formatMoney function takes an amount parameter and returns a string that prefixes the APP_NAME with a dollar sign and the amount formatted to two decimal places.",
+      "summary_hash": "0791fbcce7d7b02c68fb6d0b114a8d9711f1fc3ca59c5a8677a4aa9caeed3306",
+      "stale": false
     },
     "src/main.js": {
       "id": "src/main.js",
@@ -188,9 +188,9 @@
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "ITEMS is a constant array containing three objects representing menu items (coffee, tea, muffin) with their respective names and prices.",
+      "summary_hash": "468e6766b9fa7d69f59c9d277f053d3c1007a2b6a016b4b615a731428df04d45",
+      "stale": false
     },
     "src/main.js#checkout": {
       "id": "src/main.js#checkout",
@@ -209,9 +209,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The `checkout` function calculates the final price by summing the provided prices, applying a discount and tax, and returning a formatted string that includes the total amount and the title-cased label.",
+      "summary_hash": "c06b119b480534417978e57095a81eee14108493d975a57a51bc2d47c8d45eaa",
+      "stale": false
     },
     "src/main.js#loadExtra": {
       "id": "src/main.js#loadExtra",
@@ -227,9 +227,9 @@
         "params": [],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The loadExtra function dynamically imports the math.js module.",
+      "summary_hash": "de3529ffb2340d28f3541beebfcd7fba925b6242ada8235cf5bdc3e2cde8f3f8",
+      "stale": false
     },
     "src/math.js": {
       "id": "src/math.js",
@@ -263,9 +263,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The add function takes two parameters, a and b, and returns their sum.",
+      "summary_hash": "943e5e6c7002b090e018788816872de49bc3018e09a554c80b5737aa43cc683c",
+      "stale": false
     },
     "src/math.js#applyDiscount": {
       "id": "src/math.js#applyDiscount",
@@ -284,9 +284,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The applyDiscount function calculates the final price by subtracting the discount amount (amount multiplied by rate) from the original amount.",
+      "summary_hash": "c7b862e6f46474bdb3a1ef7ca08e72fead4967c6c68f09f21331944cb8bbaa4c",
+      "stale": false
     },
     "src/math.js#applyTax": {
       "id": "src/math.js#applyTax",
@@ -305,9 +305,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The applyTax function calculates the total amount after tax by adding the product of the amount and the tax rate to the original amount.",
+      "summary_hash": "ad74ca1210af278e13eca1eb67d8f4081bc97c2b2ec2bc30feb4b96a138b57d6",
+      "stale": false
     },
     "src/math.js#multiply": {
       "id": "src/math.js#multiply",
@@ -326,9 +326,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The multiply function takes two parameters, a and b, and returns their product.",
+      "summary_hash": "5ad65ed8bcc02d82f9191c4898d0441bd80a50efa0c80676193837b8348a40da",
+      "stale": false
     },
     "src/receipt.js": {
       "id": "src/receipt.js",
@@ -361,9 +361,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The lineFor function formats a receipt line by combining the title-cased item name with its price formatted to two decimal places.",
+      "summary_hash": "33c5ece5fc15a1a5634c827ae6bea97f95342ac7b025521615e0e1bb252813a3",
+      "stale": false
     },
     "src/receipt.js#receiptLines": {
       "id": "src/receipt.js#receiptLines",
@@ -381,9 +381,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The `receiptLines` function takes an array of items and returns a new array where each item is transformed using the `lineFor` function.",
+      "summary_hash": "9e33ff6cca61e7a4002e74eba06a97058785b2cb60607a9d8ca7075f1c87ed83",
+      "stale": false
     },
     "src/summary.js": {
       "id": "src/summary.js",
@@ -416,9 +416,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The header function takes an items parameter and returns a string combining a greeting based on the CUSTOMER constant, the title-cased customer name, and the item count derived from the items array.",
+      "summary_hash": "31efd655e2f4adac78ac0c2346069c0e4173b5b89959b21a2bb71f637867b520",
+      "stale": false
     },
     "src/summary.js#itemCount": {
       "id": "src/summary.js#itemCount",
@@ -436,9 +436,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "Returns the length of the provided items array.",
+      "summary_hash": "066a9c50259ae262593d7399bf50de008ef1e6fd578248a798eec2e7e36e55d8",
+      "stale": false
     },
     "src/utils/index.js": {
       "id": "src/utils/index.js",
@@ -486,9 +486,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The joinLines function takes an array of lines and returns a single string with the elements joined by newline characters.",
+      "summary_hash": "f3d5be5e9af62be1fec960495040f966a1d8f60fe341320d188e45071e285f5e",
+      "stale": false
     },
     "src/utils/string.js": {
       "id": "src/utils/string.js",
@@ -521,9 +521,9 @@
         ],
         "returns": null
       },
-      "summary": null,
-      "summary_hash": null,
-      "stale": true
+      "summary": "The titleCase function converts the first letter of each word in the input string to uppercase using a regular expression replacement.",
+      "summary_hash": "87ec25d9868fbcfa9c5f6297ef6a9ece841ef10644d736f6abcc232e7ea7c6a2",
+      "stale": false
     }
   },
   "edges": [

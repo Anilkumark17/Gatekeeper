@@ -3,15 +3,23 @@
 from __future__ import annotations
 
 import argparse
+import logging
 import sys
 from collections.abc import Iterable
 from pathlib import Path
 
+from pydantic import BaseModel, ValidationError
+
 from gatekeeper_graph.builder import build_graph
-from gatekeeper_graph.models import Edge, EdgeType
+from gatekeeper_graph.llm import LLMClient, load_config, make_client
+from gatekeeper_graph.llm.errors import LLMOutputInvalid, LLMUnavailable
+from gatekeeper_graph.models import Edge, EdgeType, Graph
 from gatekeeper_graph.reverse_index import dependents
 from gatekeeper_graph.store import load_graph, save_graph
+from gatekeeper_graph.summarizer import apply_summaries
 from gatekeeper_graph.watcher import watch
+
+logger = logging.getLogger(__name__)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -27,6 +35,8 @@ def main(argv: list[str] | None = None) -> int:
     watch_command.add_argument("root", type=Path)
     watch_command.add_argument("--out", type=Path)
 
+    commands.add_parser("llm-check", help="check the configured model and print call stats")
+
     show = commands.add_parser("show", help="print a saved graph")
     show.add_argument("graph", type=Path)
     show.add_argument("--kind")
@@ -37,6 +47,8 @@ def main(argv: list[str] | None = None) -> int:
         return _build(args.root, args.out)
     if args.command == "watch":
         return _watch(args.root, args.out)
+    if args.command == "llm-check":
+        return _llm_check()
     return _show(args.graph, args.kind, args.node)
 
 
@@ -82,12 +94,64 @@ def _watch(root: Path, out: Path | None) -> int:
 
 def _write_update(source: Path, destination: Path) -> None:
     result = build_graph(source)
+    counts = apply_summaries(result.graph, source, _summary_client(), _previous_graph(destination))
     save_graph(result.graph, destination)
     stats = result.stats
     print(
         f"files={stats.files_parsed} skipped={stats.files_skipped} "
-        f"nodes={stats.nodes} edges={stats.edges} wrote path={destination}"
+        f"nodes={stats.nodes} edges={stats.edges} "
+        f"summaries_reused={counts.reused} summaries_written={counts.written} "
+        f"summaries_skipped={counts.skipped} wrote path={destination}"
     )
+
+
+def _previous_graph(path: Path) -> Graph | None:
+    if not path.is_file():
+        return None
+    try:
+        return load_graph(path)
+    except (OSError, ValidationError, ValueError):
+        logger.warning("previous graph unreadable path=%s", path)
+        return None
+
+
+def _summary_client() -> LLMClient | None:
+    try:
+        return make_client()
+    except (LLMUnavailable, ImportError, ValidationError) as exc:
+        logger.warning("summary client unavailable reason=%s", exc)
+        return None
+
+
+class _OkCheck(BaseModel):
+    ok: bool
+
+
+def _llm_check() -> int:
+    config = load_config()
+    print(f"provider={config.provider} model={config.model}")
+    client = make_client(config)
+    if not client.is_available():
+        print(f"llm unavailable provider={config.provider} model={config.model}", file=sys.stderr)
+        return 2
+    try:
+        _value, stats = client.generate_structured(
+            "Reply with one JSON object.",
+            "Set ok to true.",
+            _OkCheck,
+        )
+    except LLMUnavailable as exc:
+        print(f"llm unavailable reason={exc}", file=sys.stderr)
+        return 2
+    except LLMOutputInvalid as exc:
+        print(f"llm output invalid raw={exc.raw}", file=sys.stderr)
+        return 3
+    print(
+        f"backend={stats.backend} model={stats.model} prompt_tokens={stats.prompt_tokens} "
+        f"output_tokens={stats.output_tokens} total_ms={stats.total_ms} "
+        f"load_ms={stats.load_ms} retries={stats.retries}"
+    )
+    return 0
 
 
 def _show(path: Path, kind: str | None, node_id: str | None) -> int:
