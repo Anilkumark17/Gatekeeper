@@ -2146,16 +2146,19 @@
       "src/format.js#formatMoney"
     ],
     "src/constants.js#DISCOUNT_RATE": [
-      "src/main.js#checkout"
+      "src/main.js#checkout",
+      "src/math.js#applyDiscount"
     ],
     "src/constants.js#TAX_RATE": [
-      "src/main.js#checkout"
+      "src/main.js#checkout",
+      "src/math.js#applyTax"
     ],
     "src/customer.js": [
       "src/summary.js"
     ],
     "src/customer.js#CUSTOMER": [
-      "src/summary.js#header"
+      "src/summary.js#header",
+      "src/utils/string.js#titleCase"
     ],
     "src/customer.js#greet": [
       "src/summary.js#header"
@@ -2167,7 +2170,9 @@
       "src/main.js#checkout"
     ],
     "src/main.js#ITEMS": [
-      "src/main.js"
+      "src/main.js",
+      "src/receipt.js#receiptLines",
+      "src/summary.js#header"
     ],
     "src/main.js#checkout": [
       "src/main.js"
@@ -2182,11 +2187,9 @@
       "src/main.js#checkout"
     ],
     "src/math.js#applyDiscount": [
-      "src/constants.js#DISCOUNT_RATE",
       "src/main.js#checkout"
     ],
     "src/math.js#applyTax": [
-      "src/constants.js#TAX_RATE",
       "src/main.js#checkout"
     ],
     "src/receipt.js": [
@@ -2196,15 +2199,13 @@
       "src/receipt.js#receiptLines"
     ],
     "src/receipt.js#receiptLines": [
-      "src/main.js",
-      "src/main.js#ITEMS"
+      "src/main.js"
     ],
     "src/summary.js": [
       "src/main.js"
     ],
     "src/summary.js#header": [
-      "src/main.js",
-      "src/main.js#ITEMS"
+      "src/main.js"
     ],
     "src/summary.js#itemCount": [
       "src/summary.js#header"
@@ -2224,7 +2225,6 @@
       "src/utils/index.js"
     ],
     "src/utils/string.js#titleCase": [
-      "src/customer.js#CUSTOMER",
       "src/main.js#checkout",
       "src/receipt.js#lineFor",
       "src/summary.js#header"

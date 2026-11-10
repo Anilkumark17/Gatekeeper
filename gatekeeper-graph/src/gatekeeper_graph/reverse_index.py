@@ -21,12 +21,20 @@ DEPENDENCY_TYPES = frozenset(
 )
 
 
+def dependency_ends(edge: Edge) -> tuple[str, str]:
+    """Return (dependent, dependency). flows_into points value -> consumer, so it is flipped."""
+    if edge.type is EdgeType.FLOWS_INTO:
+        return edge.target, edge.source
+    return edge.source, edge.target
+
+
 def compute_reverse(edges: list[Edge]) -> dict[str, list[str]]:
-    """Map each target to the sorted unique sources that depend on it."""
+    """Map each dependency to the sorted unique nodes that depend on it."""
     reverse: dict[str, set[str]] = defaultdict(set)
     for edge in edges:
         if edge.type in DEPENDENCY_TYPES:
-            reverse[edge.target].add(edge.source)
+            dependent, dependency = dependency_ends(edge)
+            reverse[dependency].add(dependent)
         elif edge.type is EdgeType.TESTED_BY:
             reverse[edge.source].add(edge.target)
     return {key: sorted(reverse[key]) for key in sorted(reverse)}

@@ -104,11 +104,10 @@ def _walk(
         if hops >= depth:
             continue
         if direction == "upstream":
-            edges = index.outgoing(current, types)
+            steps = index.dependencies(current, types)
         else:
-            edges = index.incoming(current, types)
-        for edge in edges:
-            nxt = edge.target if direction == "upstream" else edge.source
+            steps = index.users(current, types)
+        for edge, nxt in steps:
             if nxt in seen or nxt in reach:
                 continue
             seen.add(nxt)

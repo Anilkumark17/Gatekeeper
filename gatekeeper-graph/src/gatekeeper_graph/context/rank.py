@@ -141,11 +141,11 @@ def _upstream(index: GraphIndex, anchor: str) -> set[str]:
     stack = [anchor]
     while stack:
         current = stack.pop()
-        for edge in index.outgoing(current, types):
-            if edge.target in seen:
+        for _edge, nxt in index.dependencies(current, types):
+            if nxt in seen:
                 continue
-            seen.add(edge.target)
-            stack.append(edge.target)
+            seen.add(nxt)
+            stack.append(nxt)
     return seen
 
 

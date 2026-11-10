@@ -8,7 +8,7 @@ from collections.abc import Iterable
 from pathlib import Path
 
 from gatekeeper_graph.models import Edge, EdgeType, Graph, Node, NodeKind, parse_node_id
-from gatekeeper_graph.reverse_index import DEPENDENCY_TYPES
+from gatekeeper_graph.reverse_index import DEPENDENCY_TYPES, dependency_ends
 from gatekeeper_graph.store import load_graph
 
 _SYMBOL_KINDS = frozenset(NodeKind) - {NodeKind.FILE, NodeKind.EXTERNAL, NodeKind.MODULE}
@@ -118,8 +118,36 @@ class GraphIndex:
         allowed = set(types)
         return [edge for edge in self._in.get(node_id, []) if edge.type in allowed]
 
+    def dependencies(self, node_id: str, types: Iterable[EdgeType]) -> list[tuple[Edge, str]]:
+        """Nodes this node depends on, as (edge, neighbour). Direction-safe for flows_into."""
+        allowed = set(types)
+        edges = [*self._out.get(node_id, []), *self._in.get(node_id, [])]
+        found: list[tuple[Edge, str]] = []
+        for edge in edges:
+            if edge.type not in allowed:
+                continue
+            dependent, dependency = dependency_ends(edge)
+            if dependent == node_id and dependency != node_id:
+                found.append((edge, dependency))
+        found.sort(key=lambda item: (item[1], *_edge_order(item[0])))
+        return found
+
+    def users(self, node_id: str, types: Iterable[EdgeType]) -> list[tuple[Edge, str]]:
+        """Nodes that depend on this node, as (edge, neighbour). Direction-safe for flows_into."""
+        allowed = set(types)
+        edges = [*self._out.get(node_id, []), *self._in.get(node_id, [])]
+        found: list[tuple[Edge, str]] = []
+        for edge in edges:
+            if edge.type not in allowed:
+                continue
+            dependent, dependency = dependency_ends(edge)
+            if dependency == node_id and dependent != node_id:
+                found.append((edge, dependent))
+        found.sort(key=lambda item: (item[1], *_edge_order(item[0])))
+        return found
+
     def dependents(self, node_id: str, transitive: bool = False) -> list[str]:
-        direct = sorted({edge.source for edge in self.incoming(node_id, DEPENDENCY_TYPES)})
+        direct = sorted({user for _edge, user in self.users(node_id, DEPENDENCY_TYPES)})
         if not transitive:
             return direct
         seen = {node_id}
