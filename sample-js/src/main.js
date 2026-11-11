@@ -15,7 +15,7 @@ export function checkout(label, prices) {
 const ITEMS = [
   { name: "coffee", price: 10 },
   { name: "tea", price: 5 },
-  { name: "muffin", price: 2.5 },
+  { name: "muffin", price: "2.50" },
 ];
 
 const loadExtra = () => import("./math.js");
@@ -23,6 +23,6 @@ const loadExtra = () => import("./math.js");
 console.log(header(ITEMS));
 console.log(joinLines(receiptLines(ITEMS)));
 
-console.log(checkout("daily total", ITEMS.map((item) => item.price)));
+console.log(checkout("daily total", ITEMS.map((item) => Number(item.price))));
 
 void loadExtra;

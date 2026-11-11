@@ -13,6 +13,8 @@ def test_llm_check_against_local_qwen(monkeypatch: pytest.MonkeyPatch, tmp_path:
     monkeypatch.chdir(tmp_path)
     for name in _ENV:
         monkeypatch.delenv(name, raising=False)
+    monkeypatch.setenv("GATEKEEPER_LLM_PROVIDER", "ollama_http")
+    monkeypatch.setenv("GATEKEEPER_LLM_MODEL", "qwen2.5-coder:3b")
     try:
         response = httpx.get("http://localhost:11434/api/tags", timeout=2)
         response.raise_for_status()

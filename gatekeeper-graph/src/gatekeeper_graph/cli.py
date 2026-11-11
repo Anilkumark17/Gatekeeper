@@ -5,20 +5,21 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 from pathlib import Path
 
 from pydantic import BaseModel, ValidationError
 
 from gatekeeper_graph.builder import build_graph
 from gatekeeper_graph.context.commands import add_commands, dispatch
+from gatekeeper_graph.daemon import Daemon, write_update
 from gatekeeper_graph.llm import LLMClient, load_config, make_client
+from gatekeeper_graph.llm.config import load_dotenv
 from gatekeeper_graph.llm.errors import LLMOutputInvalid, LLMUnavailable
-from gatekeeper_graph.models import Edge, EdgeType, Graph
+from gatekeeper_graph.models import Edge, EdgeType
 from gatekeeper_graph.reverse_index import dependents
 from gatekeeper_graph.search import search
 from gatekeeper_graph.store import load_graph, save_graph
-from gatekeeper_graph.summarizer import apply_summaries
 from gatekeeper_graph.watcher import watch
 
 logger = logging.getLogger(__name__)
@@ -26,6 +27,7 @@ logger = logging.getLogger(__name__)
 
 def main(argv: list[str] | None = None) -> int:
     """Run the gatekeeper command. Returns a process exit code."""
+    load_dotenv()
     parser = argparse.ArgumentParser(prog="gatekeeper")
     commands = parser.add_subparsers(dest="command", required=True)
 
@@ -36,6 +38,12 @@ def main(argv: list[str] | None = None) -> int:
     watch_command = commands.add_parser("watch", help="rebuild the graph when files change")
     watch_command.add_argument("root", type=Path)
     watch_command.add_argument("--out", type=Path)
+
+    daemon_command = commands.add_parser("daemon", help="index the repo and answer questions")
+    daemon_command.add_argument("root", type=Path)
+    daemon_command.add_argument("--out", type=Path)
+    daemon_command.add_argument("--json", action="store_true")
+    daemon_command.add_argument("--budget", type=int, default=3000)
 
     commands.add_parser("llm-check", help="check the configured model and print call stats")
 
@@ -57,6 +65,8 @@ def main(argv: list[str] | None = None) -> int:
         return _build(args.root, args.out)
     if args.command == "watch":
         return _watch(args.root, args.out)
+    if args.command == "daemon":
+        return _daemon(args.root, args.out, args.json, args.budget)
     if args.command == "llm-check":
         return _llm_check()
     if args.command == "search":
@@ -98,33 +108,30 @@ def _watch(root: Path, out: Path | None) -> int:
     if isinstance(prepared, int):
         return prepared
     source, destination = prepared
-    _write_update(source, destination)
+    client = _summary_client()
+    write_update(source, destination, client)
     print(f"watching root={source}")
-    watch(source, lambda: _write_update(source, destination))
+    watch(source, lambda: write_update(source, destination, client))
     return 0
 
 
-def _write_update(source: Path, destination: Path) -> None:
-    result = build_graph(source)
-    counts = apply_summaries(result.graph, source, _summary_client(), _previous_graph(destination))
-    save_graph(result.graph, destination)
-    stats = result.stats
-    print(
-        f"files={stats.files_parsed} skipped={stats.files_skipped} "
-        f"nodes={stats.nodes} edges={stats.edges} "
-        f"summaries_reused={counts.reused} summaries_written={counts.written} "
-        f"summaries_skipped={counts.skipped} wrote path={destination}"
-    )
+def _daemon(root: Path, out: Path | None, as_json: bool, budget: int) -> int:
+    prepared = _output_path(root, out)
+    if isinstance(prepared, int):
+        return prepared
+    source, destination = prepared
+    config = load_config()
+    print(f"provider={config.provider} model={config.model}")
+    daemon = Daemon(source, destination, _summary_client(), as_json=as_json, budget=budget)
+    return daemon.run(_stdin_questions())
 
 
-def _previous_graph(path: Path) -> Graph | None:
-    if not path.is_file():
-        return None
-    try:
-        return load_graph(path)
-    except (OSError, ValidationError, ValueError):
-        logger.warning("previous graph unreadable path=%s", path)
-        return None
+def _stdin_questions() -> Iterator[str]:
+    while True:
+        try:
+            yield input("question> ")
+        except EOFError:
+            return
 
 
 def _summary_client() -> LLMClient | None:

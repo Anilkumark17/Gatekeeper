@@ -26,7 +26,7 @@ Importing `gatekeeper_graph.llm` does not import LangChain. Constructing a LangC
 2. `[llm]` in `gatekeeper.toml` in the current directory.
 3. `GATEKEEPER_LLM_PROVIDER`, `GATEKEEPER_LLM_MODEL`, and `GATEKEEPER_LLM_BASE_URL`. These win.
 
-`GROQ_API_KEY` is never a config field, never part of `repr(config)`, and never written to logs.
+`GROQ_API_KEY` is never a config field, never part of `repr(config)`, and never written to logs. A local `.env` in the project directory fills it when the variable is unset. `.env` is gitignored. `.env.example` shows the names only.
 
 ```toml
 [llm]
@@ -35,7 +35,6 @@ model = "qwen/qwen3.8-27b"
 ```
 
 ```powershell
-$env:GROQ_API_KEY = "<your key>"
 uv run gatekeeper llm-check
 ```
 
@@ -46,9 +45,6 @@ uv run gatekeeper llm-check
 `gatekeeper watch` rebuilds the graph after a file event, then fills symbol summaries through `LLMClient`. A symbol whose content hash is unchanged keeps its summary. A changed symbol is sent to the configured model. If the model is unavailable, the previous summary stays and `stale` is true. `gatekeeper build` does not call the model.
 
 ```powershell
-$env:GROQ_API_KEY = "<your key>"
-$env:GATEKEEPER_LLM_PROVIDER = "langchain_groq"
-$env:GATEKEEPER_LLM_MODEL = "qwen/qwen3.8-27b"
 uv sync --extra langchain
 uv run gatekeeper watch C:\Users\anilk\Desktop\coding\Visualize\sample-js --out C:\Users\anilk\Desktop\coding\Visualize\gatekeeper-data\sample-js.graph.json
 ```

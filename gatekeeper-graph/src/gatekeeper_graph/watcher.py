@@ -88,27 +88,49 @@ class RebuildHandler(FileSystemEventHandler):
         return not is_ignored(relative)
 
 
+class WatchSession:
+    """A started or startable watch on one repository root."""
+
+    def __init__(self, root: Path, on_change: Callable[[], None] | None = None) -> None:
+        self._root = root
+        self._rebuild: RebuildHandler | None
+        handler: FileSystemEventHandler
+        if on_change is None:
+            self._rebuild = None
+            handler = PrintHandler()
+        else:
+            self._rebuild = RebuildHandler(root, on_change)
+            handler = self._rebuild
+        self._observer = Observer()
+        self._observer.schedule(handler, str(root), recursive=True)
+        self._started = False
+
+    def start(self) -> None:
+        """Start the operating-system watch."""
+        self._observer.start()
+        self._started = True
+        logger.info("watching root=%s", self._root)
+
+    def stop(self) -> None:
+        """Stop the watch and cancel a pending rebuild."""
+        if self._started:
+            self._observer.stop()
+        if self._rebuild is not None:
+            self._rebuild.close()
+        if self._started:
+            self._observer.join()
+            self._started = False
+
+
 def watch(root: Path, on_change: Callable[[], None] | None = None) -> None:
     """Watch root until Ctrl+C. Pass on_change to rebuild instead of printing events."""
-    handler: FileSystemEventHandler
-    rebuild: RebuildHandler | None = None
-    if on_change is None:
-        handler = PrintHandler()
-    else:
-        rebuild = RebuildHandler(root, on_change)
-        handler = rebuild
-    observer = Observer()
-    observer.schedule(handler, str(root), recursive=True)
-    observer.start()
-    logger.info("watching root=%s", root)
+    session = WatchSession(root, on_change)
+    session.start()
     try:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
-        observer.stop()
-        if rebuild is not None:
-            rebuild.close()
-    observer.join()
+        session.stop()
 
 
 if __name__ == "__main__":

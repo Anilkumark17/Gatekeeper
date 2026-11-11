@@ -35,10 +35,9 @@ flowchart TD
 
 Every model call goes through `LLMClient.generate_structured`. The package default is the local Ollama client. Groq is the same client with environment settings, and the API key stays in the environment:
 
+The project `.env` supplies `GATEKEEPER_LLM_PROVIDER`, `GATEKEEPER_LLM_MODEL`, and `GROQ_API_KEY` when they are unset.
+
 ```powershell
-$env:GATEKEEPER_LLM_PROVIDER = "langchain_groq"
-$env:GATEKEEPER_LLM_MODEL = "qwen/qwen3.8-27b"
-$env:GROQ_API_KEY = "<your key>"
 uv run gatekeeper context <graph> "<question>" --root <repo> --json
 ```
 

@@ -36,6 +36,29 @@ def test_windows_frame_and_plain_frame() -> None:
     assert plain.frames[0].line == 10
 
 
+def test_source_extension_does_not_eat_json_or_jsx() -> None:
+    facts = prepass(
+        "see package.json and src/main.jsx",
+        frozenset({"src/main.jsx", "package.json"}),
+    )
+    assert facts.files == ("src/main.jsx",)
+
+
+def test_windows_path_glued_to_a_node_stack() -> None:
+    question = (
+        r"node C:\Users\anilk\Desktop\coding\Visualize\sample-js\src\main.js"
+        "node:internal/modules/cjs/loader:1568 Error: Cannot find module"
+    )
+    facts = prepass(question, frozenset({"src/main.js", "src/math.js"}))
+    assert facts.files == ("src/main.js",)
+
+
+def test_backslash_stripped_path_matches_a_repo_file() -> None:
+    question = "Cannot find module UsersanilkDesktopcodingVisualizesample-jssrcmain.js"
+    facts = prepass(question, frozenset({"src/main.js", "src/math.js"}))
+    assert facts.files == ("src/main.js",)
+
+
 def test_prose_has_no_files_frames_or_errors() -> None:
     facts = prepass("the receipt shows customer names in the wrong case")
     assert facts.files == ()

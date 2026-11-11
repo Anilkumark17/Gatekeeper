@@ -127,7 +127,7 @@
         "start": 1,
         "end": 28
       },
-      "hash": "198f271b76130618b12dc98aa4bd90e5e44e791d",
+      "hash": "69b3469fc95b7ecedcd726d71438e16a8a3359cd",
       "signature": {
         "props": [],
         "params": [],
@@ -139,6 +139,7 @@
       "tokens": [
         "DISCOUNT_RATE",
         "ITEMS",
+        "Number",
         "TAX_RATE",
         "add",
         "applyDiscount",
@@ -174,7 +175,7 @@
         "./utils/index.js",
         "0",
         "10",
-        "2.5",
+        "2.50",
         "5",
         "coffee",
         "daily total",
@@ -188,9 +189,9 @@
       "file": "src/math.js",
       "range": {
         "start": 1,
-        "end": 13
+        "end": 22
       },
-      "hash": "0e9f3bc04b5d968c3b7c62a8adc6db95ec4acab7",
+      "hash": "bc685afacc5b1e2b2882131fab4eb5dcd5c7b9d4",
       "signature": {
         "props": [],
         "params": [],
@@ -206,6 +207,8 @@
         "applyDiscount",
         "applyTax",
         "b",
+        "divide",
+        "modulus",
         "multiply",
         "rate"
       ],
@@ -219,7 +222,7 @@
         "start": 1,
         "end": 9
       },
-      "hash": "c5e329a8447f6fe514f2ce1e2444fb2727483d11",
+      "hash": "e932051cc982fbe0094dbdcbc3111d60d5f70985",
       "signature": {
         "props": [],
         "params": [],
@@ -229,6 +232,7 @@
       "summary_hash": "a1661a9e699722cdec14e2e710389bc6ad64f70ea1ed0cad5d33431b64da1f1d",
       "stale": false,
       "tokens": [
+        "Number",
         "item",
         "items",
         "lineFor",
@@ -652,7 +656,7 @@
       "kind": "file",
       "file": "src/main.js",
       "range": null,
-      "hash": "198f271b76130618b12dc98aa4bd90e5e44e791d",
+      "hash": "69b3469fc95b7ecedcd726d71438e16a8a3359cd",
       "signature": {
         "props": [],
         "params": [],
@@ -664,6 +668,7 @@
       "tokens": [
         "DISCOUNT_RATE",
         "ITEMS",
+        "Number",
         "TAX_RATE",
         "add",
         "applyDiscount",
@@ -699,7 +704,7 @@
         "./utils/index.js",
         "0",
         "10",
-        "2.5",
+        "2.50",
         "5",
         "coffee",
         "daily total",
@@ -715,7 +720,7 @@
         "start": 15,
         "end": 19
       },
-      "hash": "f824c90828a60c91f7455a8f0370e5031ac6b705",
+      "hash": "0acb00aa5d350862615c3ae2174ff8e3835c1a5e",
       "signature": {
         "props": [],
         "params": [],
@@ -731,7 +736,7 @@
       ],
       "literals": [
         "10",
-        "2.5",
+        "2.50",
         "5",
         "coffee",
         "muffin",
@@ -810,7 +815,7 @@
       "kind": "file",
       "file": "src/math.js",
       "range": null,
-      "hash": "0e9f3bc04b5d968c3b7c62a8adc6db95ec4acab7",
+      "hash": "bc685afacc5b1e2b2882131fab4eb5dcd5c7b9d4",
       "signature": {
         "props": [],
         "params": [],
@@ -826,6 +831,8 @@
         "applyDiscount",
         "applyTax",
         "b",
+        "divide",
+        "modulus",
         "multiply",
         "rate"
       ],
@@ -848,9 +855,9 @@
         ],
         "returns": null
       },
-      "summary": "The add function takes two parameters, a and b, and returns their sum.",
-      "summary_hash": "943e5e6c7002b090e018788816872de49bc3018e09a554c80b5737aa43cc683c",
-      "stale": false,
+      "summary": null,
+      "summary_hash": null,
+      "stale": true,
       "tokens": [
         "a",
         "add",
@@ -912,6 +919,60 @@
       ],
       "literals": []
     },
+    "src/math.js#divide": {
+      "id": "src/math.js#divide",
+      "kind": "function",
+      "file": "src/math.js",
+      "range": {
+        "start": 16,
+        "end": 18
+      },
+      "hash": "41755ff60a067bd27ab64018339a5323ab93332b",
+      "signature": {
+        "props": [],
+        "params": [
+          "a",
+          "b"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true,
+      "tokens": [
+        "a",
+        "b",
+        "divide"
+      ],
+      "literals": []
+    },
+    "src/math.js#modulus": {
+      "id": "src/math.js#modulus",
+      "kind": "function",
+      "file": "src/math.js",
+      "range": {
+        "start": 20,
+        "end": 22
+      },
+      "hash": "37b12f5397a1504df3364908712bb7fbad2eac2d",
+      "signature": {
+        "props": [],
+        "params": [
+          "a",
+          "b"
+        ],
+        "returns": null
+      },
+      "summary": null,
+      "summary_hash": null,
+      "stale": true,
+      "tokens": [
+        "a",
+        "b",
+        "modulus"
+      ],
+      "literals": []
+    },
     "src/math.js#multiply": {
       "id": "src/math.js#multiply",
       "kind": "function",
@@ -944,7 +1005,7 @@
       "kind": "file",
       "file": "src/receipt.js",
       "range": null,
-      "hash": "c5e329a8447f6fe514f2ce1e2444fb2727483d11",
+      "hash": "e932051cc982fbe0094dbdcbc3111d60d5f70985",
       "signature": {
         "props": [],
         "params": [],
@@ -954,6 +1015,7 @@
       "summary_hash": "9e5b25d1c5cbdc2da2e67d1c473a5eea7a19edc32cafed222843f93899108ce9",
       "stale": false,
       "tokens": [
+        "Number",
         "item",
         "items",
         "lineFor",
@@ -978,7 +1040,7 @@
         "start": 3,
         "end": 5
       },
-      "hash": "2b84a4f23d38350d4a5d9550a82c5113eda4620a",
+      "hash": "0a1ef944b59cdb568f9ff99ea088a31f1ed91472",
       "signature": {
         "props": [],
         "params": [
@@ -990,6 +1052,7 @@
       "summary_hash": "33c5ece5fc15a1a5634c827ae6bea97f95342ac7b025521615e0e1bb252813a3",
       "stale": false,
       "tokens": [
+        "Number",
         "item",
         "lineFor",
         "name",
@@ -1527,7 +1590,7 @@
       "props": [],
       "raw": null,
       "args": [
-        "(item) => item.price"
+        "(item) => Number(item.price)"
       ]
     },
     {
@@ -1542,7 +1605,7 @@
       "raw": null,
       "args": [
         "\"daily total\"",
-        "ITEMS.map((item) => item.price)"
+        "ITEMS.map((item) => Number(item.price))"
       ]
     },
     {
@@ -1914,6 +1977,30 @@
     },
     {
       "from": "src/math.js",
+      "to": "src/math.js#divide",
+      "type": "contains",
+      "evidence": {
+        "file": "src/math.js",
+        "line": 16
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/math.js",
+      "to": "src/math.js#modulus",
+      "type": "contains",
+      "evidence": {
+        "file": "src/math.js",
+        "line": 20
+      },
+      "props": [],
+      "raw": null,
+      "args": []
+    },
+    {
+      "from": "src/math.js",
       "to": "src/math.js#multiply",
       "type": "contains",
       "evidence": {
@@ -2146,16 +2233,19 @@
       "src/format.js#formatMoney"
     ],
     "src/constants.js#DISCOUNT_RATE": [
-      "src/main.js#checkout"
+      "src/main.js#checkout",
+      "src/math.js#applyDiscount"
     ],
     "src/constants.js#TAX_RATE": [
-      "src/main.js#checkout"
+      "src/main.js#checkout",
+      "src/math.js#applyTax"
     ],
     "src/customer.js": [
       "src/summary.js"
     ],
     "src/customer.js#CUSTOMER": [
-      "src/summary.js#header"
+      "src/summary.js#header",
+      "src/utils/string.js#titleCase"
     ],
     "src/customer.js#greet": [
       "src/summary.js#header"
@@ -2167,7 +2257,9 @@
       "src/main.js#checkout"
     ],
     "src/main.js#ITEMS": [
-      "src/main.js"
+      "src/main.js",
+      "src/receipt.js#receiptLines",
+      "src/summary.js#header"
     ],
     "src/main.js#checkout": [
       "src/main.js"
@@ -2182,11 +2274,9 @@
       "src/main.js#checkout"
     ],
     "src/math.js#applyDiscount": [
-      "src/constants.js#DISCOUNT_RATE",
       "src/main.js#checkout"
     ],
     "src/math.js#applyTax": [
-      "src/constants.js#TAX_RATE",
       "src/main.js#checkout"
     ],
     "src/receipt.js": [
@@ -2196,15 +2286,13 @@
       "src/receipt.js#receiptLines"
     ],
     "src/receipt.js#receiptLines": [
-      "src/main.js",
-      "src/main.js#ITEMS"
+      "src/main.js"
     ],
     "src/summary.js": [
       "src/main.js"
     ],
     "src/summary.js#header": [
-      "src/main.js",
-      "src/main.js#ITEMS"
+      "src/main.js"
     ],
     "src/summary.js#itemCount": [
       "src/summary.js#header"
@@ -2224,7 +2312,6 @@
       "src/utils/index.js"
     ],
     "src/utils/string.js#titleCase": [
-      "src/customer.js#CUSTOMER",
       "src/main.js#checkout",
       "src/receipt.js#lineFor",
       "src/summary.js#header"
@@ -2341,7 +2428,12 @@
       "src/main.js",
       "src/main.js#ITEMS"
     ],
-    "2.5": [
+    "2.50": [
+      "module:src/main.js",
+      "src/main.js",
+      "src/main.js#ITEMS"
+    ],
+    "50": [
       "module:src/main.js",
       "src/main.js",
       "src/main.js#ITEMS"
@@ -2435,7 +2527,6 @@
       "src/main.js",
       "src/main.js#checkout",
       "src/math.js",
-      "src/math.js#add",
       "src/math.js#applyTax",
       "src/math.js#multiply",
       "src/receipt.js",
@@ -2704,6 +2795,11 @@
       "module:src/main.js",
       "src/main.js"
     ],
+    "divide": [
+      "module:src/math.js",
+      "src/math.js",
+      "src/math.js#divide"
+    ],
     "dollar": [
       "module:src/format.js",
       "src/format.js",
@@ -2843,7 +2939,6 @@
       "src/main.js",
       "src/main.js#checkout",
       "src/main.js#loadExtra",
-      "src/math.js#add",
       "src/math.js#applyDiscount",
       "src/math.js#applyTax",
       "src/math.js#multiply",
@@ -3057,6 +3152,8 @@
       "src/math.js#add",
       "src/math.js#applyDiscount",
       "src/math.js#applyTax",
+      "src/math.js#divide",
+      "src/math.js#modulus",
       "src/math.js#multiply",
       "src/receipt.js",
       "src/receipt.js#lineFor",
@@ -3110,6 +3207,9 @@
     "js#discount_rate": [
       "src/constants.js#DISCOUNT_RATE"
     ],
+    "js#divide": [
+      "src/math.js#divide"
+    ],
     "js#formatmoney": [
       "src/format.js#formatMoney"
     ],
@@ -3136,6 +3236,9 @@
     ],
     "js#loadextra": [
       "src/main.js#loadExtra"
+    ],
+    "js#modulus": [
+      "src/math.js#modulus"
     ],
     "js#multiply": [
       "src/math.js#multiply"
@@ -3264,6 +3367,8 @@
       "src/math.js#add",
       "src/math.js#applyDiscount",
       "src/math.js#applyTax",
+      "src/math.js#divide",
+      "src/math.js#modulus",
       "src/math.js#multiply"
     ],
     "math.js": [
@@ -3299,6 +3404,11 @@
       "module:src/main.js",
       "src/main.js",
       "src/main.js#loadExtra"
+    ],
+    "modulus": [
+      "module:src/math.js",
+      "src/math.js",
+      "src/math.js#modulus"
     ],
     "muffin": [
       "module:src/main.js",
@@ -3342,6 +3452,13 @@
       "module:src/utils/join.js",
       "src/utils/join.js",
       "src/utils/join.js#joinLines"
+    ],
+    "number": [
+      "module:src/main.js",
+      "module:src/receipt.js",
+      "src/main.js",
+      "src/receipt.js",
+      "src/receipt.js#lineFor"
     ],
     "objects": [
       "src/main.js#ITEMS"
@@ -3392,7 +3509,6 @@
       "src/customer.js"
     ],
     "parameters": [
-      "src/math.js#add",
       "src/math.js#multiply"
     ],
     "pattern": [
@@ -3522,7 +3638,6 @@
       "src/format.js",
       "src/format.js#formatMoney",
       "src/main.js#checkout",
-      "src/math.js#add",
       "src/math.js#multiply",
       "src/summary.js",
       "src/summary.js#itemCount",
@@ -3575,6 +3690,8 @@
       "src/math.js#add",
       "src/math.js#applyDiscount",
       "src/math.js#applyTax",
+      "src/math.js#divide",
+      "src/math.js#modulus",
       "src/math.js#multiply",
       "src/receipt.js",
       "src/receipt.js#lineFor",
@@ -3624,6 +3741,8 @@
       "src/math.js#add",
       "src/math.js#applyDiscount",
       "src/math.js#applyTax",
+      "src/math.js#divide",
+      "src/math.js#modulus",
       "src/math.js#multiply"
     ],
     "src/receipt.js": [
@@ -3687,9 +3806,6 @@
       "src/main.js",
       "src/main.js#checkout"
     ],
-    "sum.": [
-      "src/math.js#add"
-    ],
     "summary": [
       "module:src/main.js",
       "module:src/summary.js",
@@ -3714,7 +3830,6 @@
       "src/customer.js#greet",
       "src/format.js#formatMoney",
       "src/kmp.js#kmp",
-      "src/math.js#add",
       "src/math.js#multiply",
       "src/summary.js#itemCount",
       "src/utils/join.js",
@@ -3780,7 +3895,6 @@
       "src/main.js#checkout",
       "src/main.js#loadExtra",
       "src/math.js",
-      "src/math.js#add",
       "src/math.js#applyDiscount",
       "src/math.js#applyTax",
       "src/math.js#multiply",
@@ -3798,9 +3912,6 @@
     ],
     "the `greet` function takes a `name` parameter and returns a string concatenating \"hello \" with the provided name": [
       "src/customer.js#greet"
-    ],
-    "the add function takes two parameters, a and b, and returns their sum": [
-      "src/math.js#add"
     ],
     "the applydiscount function calculates the final price by subtracting the discount (amount multiplied by rate) from the original amount": [
       "src/math.js#applyDiscount"
@@ -3899,7 +4010,6 @@
     ],
     "their": [
       "src/main.js#ITEMS",
-      "src/math.js#add",
       "src/math.js#multiply"
     ],
     "this": [
@@ -4004,7 +4114,6 @@
       "module:src/receipt.js",
       "src/format.js",
       "src/format.js#formatMoney",
-      "src/math.js#add",
       "src/math.js#multiply",
       "src/receipt.js",
       "src/receipt.js#lineFor"

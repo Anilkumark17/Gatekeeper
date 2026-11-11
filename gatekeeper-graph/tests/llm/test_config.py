@@ -1,9 +1,11 @@
 import logging
+import os
 from pathlib import Path
 
 import pytest
 
 from gatekeeper_graph.llm import LLMConfig, load_config
+from gatekeeper_graph.llm.config import load_dotenv
 
 _ENV = ("GATEKEEPER_LLM_PROVIDER", "GATEKEEPER_LLM_MODEL", "GATEKEEPER_LLM_BASE_URL")
 
@@ -14,6 +16,75 @@ def clean_dir(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> Path:
     for name in _ENV:
         monkeypatch.delenv(name, raising=False)
     return tmp_path
+
+
+def test_dotenv_fills_missing_names_and_keeps_existing(
+    clean_dir: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    clean_dir.joinpath(".env").write_text(
+        "GATEKEEPER_LLM_PROVIDER=langchain_groq\n"
+        "GATEKEEPER_LLM_MODEL=from-dotenv\n"
+        "GROQ_API_KEY=dotenv-secret\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("GROQ_API_KEY", "already-set")
+    load_dotenv()
+    try:
+        config = load_config()
+        assert config.provider == "langchain_groq"
+        assert config.model == "from-dotenv"
+        assert os.environ["GROQ_API_KEY"] == "already-set"
+    finally:
+        os.environ.pop("GATEKEEPER_LLM_PROVIDER", None)
+        os.environ.pop("GATEKEEPER_LLM_MODEL", None)
+
+
+def test_cli_reads_dotenv_before_the_command(
+    clean_dir: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    clean_dir.joinpath(".env").write_text(
+        "GATEKEEPER_LLM_PROVIDER=langchain_groq\nGROQ_API_KEY=cli-secret\n",
+        encoding="utf-8",
+    )
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    from gatekeeper_graph.cli import main
+
+    with pytest.raises(SystemExit):
+        main([])
+    try:
+        assert os.environ["GATEKEEPER_LLM_PROVIDER"] == "langchain_groq"
+        assert os.environ["GROQ_API_KEY"] == "cli-secret"
+    finally:
+        os.environ.pop("GATEKEEPER_LLM_PROVIDER", None)
+        os.environ.pop("GATEKEEPER_LLM_MODEL", None)
+        os.environ.pop("GROQ_API_KEY", None)
+
+
+def test_dotenv_reads_a_later_file_without_overriding(
+    clean_dir: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    first = clean_dir / ".env"
+    second = clean_dir / "project.env"
+    first.write_text("GATEKEEPER_LLM_PROVIDER=langchain_groq\n", encoding="utf-8")
+    second.write_text(
+        "GATEKEEPER_LLM_PROVIDER=ollama_http\nGATEKEEPER_LLM_MODEL=from-project\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        "gatekeeper_graph.llm.config._dotenv_files",
+        lambda _path: [first, second],
+    )
+    load_dotenv()
+    try:
+        config = load_config()
+        assert config.provider == "langchain_groq"
+        assert config.model == "from-project"
+    finally:
+        os.environ.pop("GATEKEEPER_LLM_PROVIDER", None)
+        os.environ.pop("GATEKEEPER_LLM_MODEL", None)
 
 
 def test_defaults(clean_dir: Path) -> None:

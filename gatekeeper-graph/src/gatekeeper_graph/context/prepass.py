@@ -9,10 +9,11 @@ from pydantic import BaseModel, ConfigDict
 
 from gatekeeper_graph.context.intent import StackFrame
 
-_EXTENSIONS = ("js", "jsx", "ts", "tsx", "mjs", "cjs")
+_EXTENSIONS = ("jsx", "tsx", "mjs", "cjs", "js", "ts")
 _EXT = "|".join(_EXTENSIONS)
 _FILE_RE = re.compile(
-    rf"(?<![\w@])(?P<path>(?:[A-Za-z]:[\\/])?(?:\.[\\/])?(?:[\w.-]+[\\/])*[\w.-]+\.(?:{_EXT}))(?![\w-])"
+    rf"(?<![\w@])(?P<path>(?:[A-Za-z]:[\\/])?(?:\.[\\/])?(?:[\w.-]+[\\/])*[\w.-]+\.(?:{_EXT}))"
+    rf"(?!on\b|x\b)"
 )
 _FRAME_RE = re.compile(
     rf"\bat\s+(?:(?P<name>[A-Za-z_$][\w$]*)\s+\()?"
@@ -36,7 +37,7 @@ def prepass(question: str, repo_files: frozenset[str] | None = None) -> PrePass:
     """Pull quoted text, code names, files, frames, and error types from a question."""
     quoted, backticks = _quotes(question)
     raw_files = (_resolve(match.group("path"), repo_files) for match in _FILE_RE.finditer(question))
-    files = _unique(raw_files)
+    files = _unique([*raw_files, *_compact_files(question, repo_files)])
     frames: list[StackFrame] = []
     seen_frames: set[tuple[str, int, str]] = set()
     for match in _FRAME_RE.finditer(question):
@@ -108,6 +109,20 @@ def _resolve(raw: str, repo_files: frozenset[str] | None) -> str | None:
     if len(partial) == 1:
         return partial[0]
     return None
+
+
+def _compact_files(question: str, repo_files: frozenset[str] | None) -> list[str]:
+    """Find repo files whose path survived with the slashes removed."""
+    if not repo_files:
+        return []
+    compact = re.sub(r"[\\/\s]+", "", question).lower()
+    found: list[str] = []
+    for item in sorted(repo_files):
+        if "/" not in item:
+            continue
+        if item.replace("/", "").lower() in compact:
+            found.append(item)
+    return found
 
 
 def _unique(items: Iterable[str | None]) -> list[str]:
